@@ -1,6 +1,6 @@
 # Wild Ox Godot VR/XR Template
 
-> Note: this project requires Godot 4.4 or later
+> Note: Main requires Godot 4.5 or later and each branch will have locked minor version numbers
 
 This project is best ran on HMDs in compatability renderer.
 
@@ -11,6 +11,7 @@ This project is best ran on HMDs in compatability renderer.
 ## Features
 
 ### VR IK System
+
 - **Full-body IK with SkeletonIK3D:** Head, arms, and legs track VR controllers and HMD
 - **Dynamic crouching:** Legs automatically solve IK when player crouches
 - **Configurable hand tracking:** Adjust hand rotation/position offsets to match your avatar
@@ -18,11 +19,13 @@ This project is best ran on HMDs in compatability renderer.
 - **Debug visualization:** Real-time skeleton mirror for tuning IK behavior (see `scenes/debug/`)
 
 ### Rendering Features
+
 - **Fast Sky Node:** Fully dynamic day/night cycle with procedural clouds
 - **Optimized lighting:** Baked lightmaps with dynamic shadow support
 - **MSAA 4x:** Smooth visuals on Quest 2/3 hardware
 
 ### VR Movement & Controls
+
 - **Physically based locomotion:** Smooth movement with physics capsule collision
 - **Snap turning:** Configurable snap angles (45°, 90°, etc.)
 - **Smooth turning:** Optional analog stick rotation
@@ -30,6 +33,7 @@ This project is best ran on HMDs in compatability renderer.
 - **Velocity averaging:** Smooth hand tracking for throwing/interactions
 
 ### Testing Tools
+
 - **VRPlayer:** Instant VR testing with full-body IK and physical locomotion
 - **FPSPlayer:** Navigate maps without HMD for level design
 - **Debug mirror:** External skeleton view for IK tuning (drag & drop, auto-detection)
