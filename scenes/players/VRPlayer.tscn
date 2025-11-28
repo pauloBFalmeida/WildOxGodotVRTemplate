@@ -39,7 +39,7 @@ albedo_color = Color(0.734906, 0.0676843, 0.198859, 0.4)
 radius = 0.05
 height = 0.1
 
-[node name="Node3D" type="XROrigin3D"]
+[node name="XROrigin3D" type="XROrigin3D"]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
 
@@ -107,11 +107,6 @@ mesh = SubResource("SphereMesh_wi1mb")
 
 [node name="VRLocomotion" type="Node" parent="."]
 script = ExtResource("2_uvuj7")
-speed = 3.0
-sprint_multiplier = 1.5
-toggle_sprint_mode = false
-show_capsule = false
-capsule_color = Color(0.501242, 0.634331, 0.935977, 0.8)
 metadata/_custom_type_script = "uid://gvf05fwc3p2p"
 
 [node name="VRIKComponent" type="Node" parent="."]
