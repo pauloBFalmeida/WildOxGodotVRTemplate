@@ -365,6 +365,8 @@ func _create_physics_body():
 	physics_body.collision_priority = collision_priority # Match priority
 	physics_body.floor_max_angle = floor_max_angle  # Maximum slope angle
 	physics_body.floor_snap_length = floor_snap_length  # Better stair snapping
+	physics_body.platform_floor_layers = floor_layers # What we consider the floor: Used in movement calculations
+	physics_body.platform_wall_layers = wall_layers # What we consider walls: Used in movement calculations
 	
 	# Add collision shape
 	collision_shape = CollisionShape3D.new()
