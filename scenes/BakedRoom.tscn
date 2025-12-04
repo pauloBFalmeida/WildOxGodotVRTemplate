@@ -1901,3 +1901,11 @@ light_data = ExtResource("46_yh3i4")
 
 [node name="SkeletonDebugMirror" parent="." instance=ExtResource("76_ts1h7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18386269, -0.71337813, -2.936)
+
+[node name="SeatedModeLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3.7138119)
+no_depth_test = true
+text = "Press 'T' to toggle Seated Mode
+(Lifts HMD/hands for seated VR)"
+font_size = 48
+outline_size = 8
