@@ -1904,7 +1904,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18386269, -0.71337813, -2.9
 
 [node name="SeatedModeLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3.7138119)
-billboard = 2
 no_depth_test = true
 text = "Press 'T' to toggle Seated Mode
 (Lifts HMD/hands for seated VR)"

@@ -112,6 +112,7 @@ metadata/_custom_type_script = "uid://gvf05fwc3p2p"
 [node name="VRIKComponent" type="Node" parent="."]
 script = ExtResource("4_3ifg7")
 skeletal_mesh_scene = ExtResource("5_xi0i4")
+seated_height_offset = 0.5
 body_forward_offset = 0.15
 hmd_rotation_deadzone = 35.0
 foot_height_offset = 0.1
@@ -124,4 +125,5 @@ right_hand_rotation_y = -92.495
 right_hand_rotation_z = -6.425
 debug_on_button_press = false
 show_controller_axes = true
+toggle_seated_key = null
 metadata/_custom_type_script = "uid://ci025t0r4hqgh"
