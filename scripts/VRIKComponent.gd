@@ -33,7 +33,7 @@ class_name VRIKComponent
 ## Enable to parent skeleton to VRLocomotion physics capsule. When enabled, skeleton rotates with snap turns and moves with player locomotion. Disable for standalone use without VRLocomotion (e.g., seated VR).
 @export var use_locomotion_integration: bool = true
 @export var seated_mode: bool = false  ## Enable seated VR mode - offsets HMD/controller tracking up to match full-height skeleton while physically seated
-@export var seated_height_offset: float = 0.8  ## Vertical offset added to HMD/hands in seated mode (distance from chair seat to where legs would be if standing)
+@export var seated_height_offset: float = 0.5  ## Vertical offset added to HMD/hands in seated mode (distance from chair seat to where legs would be if standing)
 @export var body_height_offset: float = 0.0  # Adjust body height relative to HMD
 @export var body_forward_offset: float = 0.0  # Adjust body forward/backward position (positive = forward, negative = backward)
 @export var align_skeleton_with_hmd: bool = true  # Automatically rotate skeleton to face HMD direction
