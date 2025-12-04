@@ -124,4 +124,5 @@ right_hand_rotation_y = -92.495
 right_hand_rotation_z = -6.425
 debug_on_button_press = false
 show_controller_axes = true
+toggle_seated_key = null
 metadata/_custom_type_script = "uid://ci025t0r4hqgh"

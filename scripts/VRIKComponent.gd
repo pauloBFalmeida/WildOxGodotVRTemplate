@@ -32,11 +32,14 @@ class_name VRIKComponent
 @export_group("Body Settings")
 ## Enable to parent skeleton to VRLocomotion physics capsule. When enabled, skeleton rotates with snap turns and moves with player locomotion. Disable for standalone use without VRLocomotion (e.g., seated VR).
 @export var use_locomotion_integration: bool = true
+@export var seated_mode: bool = false  ## Enable seated VR mode - offsets HMD/controller tracking up to match full-height skeleton while physically seated
+@export var seated_height_offset: float = 0.5  ## Vertical offset added to HMD/hands in seated mode (distance from chair seat to where legs would be if standing)
 @export var body_height_offset: float = 0.0  # Adjust body height relative to HMD
 @export var body_forward_offset: float = 0.0  # Adjust body forward/backward position (positive = forward, negative = backward)
 @export var align_skeleton_with_hmd: bool = true  # Automatically rotate skeleton to face HMD direction
 @export var hmd_rotation_deadzone: float = 45.0  # Degrees of HMD rotation before body starts rotating (0 = always rotate, 180 = never rotate)
 @export var body_rotation_smoothing: float = 5.0  # How smoothly the body rotates to follow HMD (higher = faster)
+@export var standing_eye_height: float = 1.6  ## Reference standing eye height in meters (adjust for your height). HMD below this = crouched, at this = standing
 @export var foot_height_offset: float = 0.0  ## Offset feet above/below ground (positive = higher, negative = lower)
 @export var foot_spacing: float = 0.3  ## Distance between feet (meters)
 
@@ -96,6 +99,7 @@ class_name VRIKComponent
 @export var show_debug_logs: bool = false  ## Enable detailed debug logging
 @export var debug_on_button_press: bool = true  ## Only print debug info when right thumbstick clicked
 @export var show_controller_axes: bool = false  ## Visualize controller coordinate axes
+@export var toggle_seated_key: Key = KEY_T  ## Keyboard key to toggle seated mode at runtime (for testing)
 
 # Internal references
 var xr_origin: XROrigin3D
@@ -149,6 +153,9 @@ var last_physics_body_rotation_y: float = 0.0  # Track physics body rotation to 
 # HMD height tracking for leg IK
 var initial_hmd_height: float = 0.0  # Calibrated HMD height at startup
 var current_hmd_height_delta: float = 0.0  # How much HMD has moved up/down from initial
+
+# Seated mode tracking
+var seated_mode_active: bool = false  # Track if seated mode is currently active
 
 # Initialization
 var initialized: bool = false
@@ -225,8 +232,8 @@ func _initialize():
 	# Initialize smoothed transforms
 	if xr_camera:
 		smoothed_head_transform = xr_camera.global_transform
-		# Calibrate initial HMD height for leg IK (use local position relative to XROrigin)
-		initial_hmd_height = xr_camera.position.y
+		if show_debug_logs:
+			print("VRIKComponent: HMD height from floor: ", xr_camera.position.y, "m")
 	if left_controller:
 		smoothed_left_hand_transform = left_controller.global_transform
 	if right_controller:
@@ -433,6 +440,16 @@ func _process(delta: float):
 	if skeleton_needs_reparenting:
 		_try_reparent_to_physics_body()
 	
+	# Toggle seated mode with keyboard key (for testing)
+	if Input.is_key_pressed(toggle_seated_key):
+		if not get_meta("_seated_toggle_pressed", false):
+			seated_mode = !seated_mode
+			print("VRIKComponent: Seated mode ", "ENABLED" if seated_mode else "DISABLED")
+			_update_seated_mode()
+			set_meta("_seated_toggle_pressed", true)
+	else:
+		set_meta("_seated_toggle_pressed", false)
+	
 	# Check for debug button press (Y button on right controller = by_button)
 	if debug_on_button_press and right_controller:
 		debug_button_pressed = right_controller.is_button_pressed("by_button")
@@ -486,6 +503,7 @@ func _update_head_tracking():
 		return
 	
 	# Get the transform to use (smoothed or direct)
+	# Note: v_offset is already applied to camera's transform by XRCamera3D
 	var head_transform = smoothed_head_transform if smooth_tracking else xr_camera.global_transform
 	
 	# Apply head rotation offset using individual axes
@@ -572,17 +590,28 @@ func _update_leg_tracking():
 	if not left_leg_ik or not right_leg_ik or not xr_camera or not skeleton_instance:
 		return
 	
-	# Calculate current HMD height delta from initial calibration (use local position)
-	var current_hmd_y = xr_camera.position.y
-	current_hmd_height_delta = current_hmd_y - initial_hmd_height
+	# Get current HMD height from floor (absolute position with floor-based tracking)
+	# Note: world_scale automatically scales all tracking positions
+	var current_hmd_height = xr_camera.global_position.y - xr_origin.global_position.y
 	
-	# Adjust hip bone height based on HMD height change
-	# When you crouch (HMD goes down), hips should also go down
+	# When in seated mode, add back the offset since we artificially raised the origin
+	if seated_mode_active:
+		current_hmd_height += seated_height_offset
+	
+	# Calculate height delta from standing reference height
+	current_hmd_height_delta = current_hmd_height - standing_eye_height
+	
+	# Always clamp so hips can only go DOWN (crouch), never UP
+	current_hmd_height_delta = min(current_hmd_height_delta, 0.0)
+	
+	# Adjust hip bone height based on HMD height relative to standing
+	# When HMD is below standing height, hips move down (crouch)
+	# When HMD is at standing height, hips at rest pose (clamped to 0)
 	if hips_bone_idx >= 0:
 		var hip_rest_pose = skeleton.get_bone_rest(hips_bone_idx)
 		var hip_pose = skeleton.get_bone_pose(hips_bone_idx)
 		
-		# Adjust hip position - move down when HMD lowers
+		# Adjust hip position based on how far HMD is from standing reference
 		var adjusted_position = hip_rest_pose.origin
 		adjusted_position.y += current_hmd_height_delta
 		
@@ -740,6 +769,34 @@ func _update_body_position():
 				
 				# Apply the rotation
 				skeleton_instance.rotation.y = current_body_rotation_y
+
+## Update seated mode by adjusting VRLocomotion's height offset
+func _update_seated_mode():
+	# Find VRLocomotion component to update its height offset
+	var vr_locomotion = xr_origin.get_node_or_null("VRLocomotion")
+	if not vr_locomotion:
+		if show_debug_logs:
+			print("VRIKComponent: VRLocomotion not found, cannot apply seated mode offset")
+		return
+	
+	if seated_mode and not seated_mode_active:
+		# Set VRLocomotion's hmd_height_offset to raise the origin
+		# This makes tracking appear higher (physics_body.y + positive offset = higher XROrigin)
+		vr_locomotion.hmd_height_offset = seated_height_offset
+		
+		seated_mode_active = true
+		
+		if show_debug_logs:
+			print("VRIKComponent: Seated mode enabled - hmd_height_offset = ", seated_height_offset, "m")
+		
+	elif not seated_mode and seated_mode_active:
+		# Restore origin to floor level
+		vr_locomotion.hmd_height_offset = 0.0
+		
+		seated_mode_active = false
+		
+		if show_debug_logs:
+			print("VRIKComponent: Seated mode disabled - hmd_height_offset restored")
 
 ## Set the skeletal mesh to be controlled by this IK system
 func set_skeleton_mesh(new_skeleton: Skeleton3D):
