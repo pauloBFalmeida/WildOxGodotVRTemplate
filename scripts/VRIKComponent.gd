@@ -32,11 +32,14 @@ class_name VRIKComponent
 @export_group("Body Settings")
 ## Enable to parent skeleton to VRLocomotion physics capsule. When enabled, skeleton rotates with snap turns and moves with player locomotion. Disable for standalone use without VRLocomotion (e.g., seated VR).
 @export var use_locomotion_integration: bool = true
+@export var seated_mode: bool = false  ## Enable seated VR mode - offsets HMD/controller tracking up to match full-height skeleton while physically seated
+@export var seated_height_offset: float = 0.8  ## Vertical offset added to HMD/hands in seated mode (distance from chair seat to where legs would be if standing)
 @export var body_height_offset: float = 0.0  # Adjust body height relative to HMD
 @export var body_forward_offset: float = 0.0  # Adjust body forward/backward position (positive = forward, negative = backward)
 @export var align_skeleton_with_hmd: bool = true  # Automatically rotate skeleton to face HMD direction
 @export var hmd_rotation_deadzone: float = 45.0  # Degrees of HMD rotation before body starts rotating (0 = always rotate, 180 = never rotate)
 @export var body_rotation_smoothing: float = 5.0  # How smoothly the body rotates to follow HMD (higher = faster)
+@export var standing_eye_height: float = 1.6  ## Reference standing eye height in meters (adjust for your height). HMD below this = crouched, at this = standing
 @export var foot_height_offset: float = 0.0  ## Offset feet above/below ground (positive = higher, negative = lower)
 @export var foot_spacing: float = 0.3  ## Distance between feet (meters)
 
@@ -96,6 +99,7 @@ class_name VRIKComponent
 @export var show_debug_logs: bool = false  ## Enable detailed debug logging
 @export var debug_on_button_press: bool = true  ## Only print debug info when right thumbstick clicked
 @export var show_controller_axes: bool = false  ## Visualize controller coordinate axes
+@export var toggle_seated_key: Key = KEY_T  ## Keyboard key to toggle seated mode at runtime (for testing)
 
 # Internal references
 var xr_origin: XROrigin3D
@@ -225,8 +229,8 @@ func _initialize():
 	# Initialize smoothed transforms
 	if xr_camera:
 		smoothed_head_transform = xr_camera.global_transform
-		# Calibrate initial HMD height for leg IK (use local position relative to XROrigin)
-		initial_hmd_height = xr_camera.position.y
+		if show_debug_logs:
+			print("VRIKComponent: HMD height from floor: ", xr_camera.position.y, "m")
 	if left_controller:
 		smoothed_left_hand_transform = left_controller.global_transform
 	if right_controller:
@@ -433,6 +437,15 @@ func _process(delta: float):
 	if skeleton_needs_reparenting:
 		_try_reparent_to_physics_body()
 	
+	# Toggle seated mode with keyboard key (for testing)
+	if Input.is_key_pressed(toggle_seated_key):
+		if not get_meta("_seated_toggle_pressed", false):
+			seated_mode = !seated_mode
+			print("VRIKComponent: Seated mode ", "ENABLED" if seated_mode else "DISABLED")
+			set_meta("_seated_toggle_pressed", true)
+	else:
+		set_meta("_seated_toggle_pressed", false)
+	
 	# Check for debug button press (Y button on right controller = by_button)
 	if debug_on_button_press and right_controller:
 		debug_button_pressed = right_controller.is_button_pressed("by_button")
@@ -488,6 +501,10 @@ func _update_head_tracking():
 	# Get the transform to use (smoothed or direct)
 	var head_transform = smoothed_head_transform if smooth_tracking else xr_camera.global_transform
 	
+	# Apply seated mode offset (lift HMD tracking position up)
+	if seated_mode:
+		head_transform.origin.y += seated_height_offset
+	
 	# Apply head rotation offset using individual axes
 	var offset_basis = Basis.from_euler(Vector3(head_rotation_x, head_rotation_y, head_rotation_z) * PI / 180.0)
 	head_transform.basis = head_transform.basis * offset_basis
@@ -521,6 +538,10 @@ func _update_hand_tracking():
 	if left_controller and left_arm_ik:
 		var target_transform = smoothed_left_hand_transform if smooth_tracking else left_controller.global_transform
 		
+		# Apply seated mode offset (lift controller tracking position up)
+		if seated_mode:
+			target_transform.origin.y += seated_height_offset
+		
 		# Apply hand position offset in controller's local space
 		var position_offset = hand_position_offset
 		target_transform.origin += target_transform.basis * position_offset
@@ -535,6 +556,10 @@ func _update_hand_tracking():
 	
 	if right_controller and right_arm_ik:
 		var target_transform = smoothed_right_hand_transform if smooth_tracking else right_controller.global_transform
+		
+		# Apply seated mode offset (lift controller tracking position up)
+		if seated_mode:
+			target_transform.origin.y += seated_height_offset
 		
 		# Apply hand position offset (with mirroring if enabled)
 		var position_offset: Vector3
@@ -572,17 +597,33 @@ func _update_leg_tracking():
 	if not left_leg_ik or not right_leg_ik or not xr_camera or not skeleton_instance:
 		return
 	
-	# Calculate current HMD height delta from initial calibration (use local position)
-	var current_hmd_y = xr_camera.position.y
-	current_hmd_height_delta = current_hmd_y - initial_hmd_height
+	# Skip leg IK in seated mode - legs stay in rest pose
+	if seated_mode:
+		return
 	
-	# Adjust hip bone height based on HMD height change
-	# When you crouch (HMD goes down), hips should also go down
+	# Get current HMD height from floor (absolute position with floor-based tracking)
+	var current_hmd_height = xr_camera.position.y
+	
+	# Apply seated mode offset if enabled
+	if seated_mode:
+		current_hmd_height += seated_height_offset
+	
+	# Calculate height delta from standing reference height
+	# This makes the hip adjustment work identically whether you start seated or standing
+	current_hmd_height_delta = current_hmd_height - standing_eye_height
+	
+	# Clamp the delta so hips can only go DOWN (crouch), never UP (tiptoe/jumping)
+	# This keeps feet planted on the ground at the skeleton's natural standing height
+	current_hmd_height_delta = min(current_hmd_height_delta, 0.0)
+	
+	# Adjust hip bone height based on HMD height relative to standing
+	# When HMD is below standing height, hips move down (crouch)
+	# When HMD is at standing height, hips at rest pose (clamped to 0)
 	if hips_bone_idx >= 0:
 		var hip_rest_pose = skeleton.get_bone_rest(hips_bone_idx)
 		var hip_pose = skeleton.get_bone_pose(hips_bone_idx)
 		
-		# Adjust hip position - move down when HMD lowers
+		# Adjust hip position based on how far HMD is from standing reference
 		var adjusted_position = hip_rest_pose.origin
 		adjusted_position.y += current_hmd_height_delta
 		
