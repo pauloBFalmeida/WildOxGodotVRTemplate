@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://chudfmf1yc60c"]
+
+[ext_resource type="PackedScene" uid="uid://ciy061odqlosy" path="res://assets/pessoa/pessoa.blend" id="1_ycxcm"]
+[ext_resource type="Material" uid="uid://dcv0igw8nbjyj" path="res://assets/pessoa/ghost_shader_mat.tres" id="2_epyi2"]
+[ext_resource type="Material" uid="uid://c7ox5il2ckcvx" path="res://assets/pessoa/ghost_clothes_shader_mat.tres" id="3_8mdan"]
+
+[node name="PessoaShaded" type="Node3D" unique_id=1576701182]
+
+[node name="pessoa" parent="." unique_id=116056196 instance=ExtResource("1_ycxcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0026379675, 0, 0.053228736)
+
+[node name="Human" parent="pessoa/Human_rig/Skeleton3D" parent_id_path=PackedInt32Array(116056196, 1863533938) index="0" unique_id=1606086667]
+material_override = ExtResource("2_epyi2")
+
+[node name="Human_cortu_cargo_pants" parent="pessoa/Human_rig/Skeleton3D" parent_id_path=PackedInt32Array(116056196, 1863533938) index="1" unique_id=696392758]
+material_override = ExtResource("3_8mdan")
+
+[node name="Human_elvs_crude_t-shirt_male" parent="pessoa/Human_rig/Skeleton3D" parent_id_path=PackedInt32Array(116056196, 1863533938) index="2" unique_id=854901531]
+material_override = ExtResource("3_8mdan")
+
+[editable path="pessoa"]
