@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=4 uid="uid://dnpk7b8w1jye8"]
+[gd_scene format=4 uid="uid://dnpk7b8w1jye8"]
 
 [ext_resource type="Script" uid="uid://h5ktq382xcfd" path="res://scripts/main_vr_init.gd" id="1_27mce"]
 [ext_resource type="Texture2D" uid="uid://bw6v4d6agwcyp" path="res://assets/textures/tilenormal.jpg" id="1_vfxhw"]
 [ext_resource type="Texture2D" uid="uid://br3wcdmcb663w" path="res://assets/textures/sci_fi_normal.jpg" id="2_27mce"]
+[ext_resource type="PackedScene" uid="uid://b8qu42svaivr1" path="res://scenes/players/VRPlayer.tscn" id="2_q511t"]
+[ext_resource type="PackedScene" uid="uid://b6dapij8f1iye" path="res://scenes/players/FPSPlayer.tscn" id="3_55hi4"]
 [ext_resource type="PackedScene" uid="uid://dqd40ieyk2ifn" path="res://scenes/sky/SkySphere.tscn" id="4_68ddv"]
 [ext_resource type="Material" uid="uid://8r7u7essx2rv" path="res://assets/battleroyal/M_PolygonBattleRoyale_01_A.tres" id="5_27mce"]
 [ext_resource type="LightmapGIData" uid="uid://bqlrg1aqcemoa" path="res://assets/battleroyal/lightmaps/Stationary.lmbake" id="6_kacge"]
@@ -111,78 +113,78 @@ _data = {
 &"Unreal Take": SubResource("Animation_35fj2")
 }
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" unique_id=675466893]
 script = ExtResource("1_27mce")
+vr_player = ExtResource("2_q511t")
+fps_player = ExtResource("3_55hi4")
 player_spawn_path = NodePath("PlayerSpawn")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=689621677]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1201405579]
 transform = Transform3D(82.291, 0, 0, 0, 1, 0, 0, 0, 58.275, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_1daua")
 mesh = SubResource("BoxMesh_3m01o")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1658638252]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00730515, 0, -0.00157547)
 shape = SubResource("BoxShape3D_x2jji")
 
-[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+[node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=128945367]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59649, 0, -5.80542)
 
-[node name="Cylinder1" type="MeshInstance3D" parent="StaticBody3D3"]
+[node name="Cylinder1" type="MeshInstance3D" parent="StaticBody3D3" unique_id=985415966]
 mesh = SubResource("CylinderMesh_x2jji")
 skeleton = NodePath("../../StaticBody3D4/MeshInstance3D2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" unique_id=630962403]
 shape = SubResource("CylinderShape3D_x2jji")
 
-[node name="StaticBody3D4" type="StaticBody3D" parent="."]
+[node name="StaticBody3D4" type="StaticBody3D" parent="." unique_id=613435001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.195021, -3.2805)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D4"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D4" unique_id=1618831838]
 transform = Transform3D(1.92639, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_3m01o")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4" unique_id=286929975]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00195313, 0, 0)
 shape = SubResource("BoxShape3D_3dvue")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=342386837]
 transform = Transform3D(-0.907334, 0, 3.26113, 0, 3.385, 0, -3.26113, 0, -0.907334, -5.20668, 0.108809, -6.07766)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2" unique_id=1585677760]
 mesh = SubResource("PrismMesh_x2jji")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1682058969]
 transform = Transform3D(0.976785, -0.214131, -0.00618812, 0.214198, 0.976693, 0.0138127, 0.00308621, -0.0148176, 0.999886, 0.0132384, -0.259861, -7.7486e-05)
 shape = SubResource("BoxShape3D_34yur")
 
-[node name="PlayerSpawn" type="Node3D" parent="."]
+[node name="PlayerSpawn" type="Node3D" parent="." unique_id=210255587]
 
-[node name="SkySphere" parent="." instance=ExtResource("4_68ddv")]
+[node name="SkySphere" parent="." unique_id=2079290258 instance=ExtResource("4_68ddv")]
 
-[node name="SM_Bld_House_01" type="Node3D" parent="."]
+[node name="SM_Bld_House_01" type="Node3D" parent="." unique_id=1580057012]
 transform = Transform3D(0.937245, 0, 0.34867, 0, 1, 0, -0.34867, 0, 0.937245, -19.3435, -0.821816, -10.5477)
 
-[node name="SM_Bld_House_01" type="MeshInstance3D" parent="SM_Bld_House_01"]
+[node name="SM_Bld_House_01" type="MeshInstance3D" parent="SM_Bld_House_01" unique_id=357786341]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 mesh = SubResource("ArrayMesh_27mce")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="SM_Bld_House_01/SM_Bld_House_01"]
+[node name="StaticBody3D" type="StaticBody3D" parent="SM_Bld_House_01/SM_Bld_House_01" unique_id=1463965888]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_House_01/SM_Bld_House_01/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Bld_House_01/SM_Bld_House_01/StaticBody3D" unique_id=796440878]
 shape = SubResource("ConcavePolygonShape3D_v84hf")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SM_Bld_House_01"]
-libraries = {
-&"": SubResource("AnimationLibrary_i612o")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SM_Bld_House_01" unique_id=1015622408]
+libraries/ = SubResource("AnimationLibrary_i612o")
 
-[node name="LightmapGI" type="LightmapGI" parent="."]
+[node name="LightmapGI" type="LightmapGI" parent="." unique_id=320400428]
 quality = 2
 directional = true
 shadowmask_mode = 1

@@ -1,7 +1,9 @@
-[gd_scene load_steps=165 format=4 uid="uid://cval6fxkfvenc"]
+[gd_scene format=4 uid="uid://cval6fxkfvenc"]
 
 [ext_resource type="Script" uid="uid://h5ktq382xcfd" path="res://scripts/main_vr_init.gd" id="1_dphc6"]
 [ext_resource type="Texture2D" uid="uid://bw6v4d6agwcyp" path="res://assets/textures/tilenormal.jpg" id="2_d38gg"]
+[ext_resource type="PackedScene" uid="uid://b8qu42svaivr1" path="res://scenes/players/VRPlayer.tscn" id="2_dng26"]
+[ext_resource type="PackedScene" uid="uid://b6dapij8f1iye" path="res://scenes/players/FPSPlayer.tscn" id="3_qye63"]
 [ext_resource type="Texture2D" uid="uid://br3wcdmcb663w" path="res://assets/textures/sci_fi_normal.jpg" id="3_r1duk"]
 [ext_resource type="Material" uid="uid://b30wndgk86oi6" path="res://assets/bedroom/materials/BoxSping-.tres" id="5_rrhf8"]
 [ext_resource type="Material" uid="uid://6jgpq7s47fgm" path="res://assets/bedroom/materials/Matress-.tres" id="6_4hscg"]
@@ -1326,564 +1328,566 @@ glow_bloom = 0.05
 glow_blend_mode = 4
 glow_hdr_threshold = 3.47
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" unique_id=777116426]
 script = ExtResource("1_dphc6")
+vr_player = ExtResource("2_dng26")
+fps_player = ExtResource("3_qye63")
 player_spawn_path = NodePath("PlayerSpawn")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2085120649]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=2084766359]
 transform = Transform3D(82.291, 0, 0, 0, 1, 0, 0, 0, 58.275, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_1daua")
 mesh = SubResource("BoxMesh_3m01o")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1924517062]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00730515, 0, -0.00157547)
 shape = SubResource("BoxShape3D_x2jji")
 
-[node name="PlayerSpawn" type="Node3D" parent="."]
+[node name="PlayerSpawn" type="Node3D" parent="." unique_id=1460526959]
 
-[node name="bedroom" type="Node3D" parent="."]
+[node name="bedroom" type="Node3D" parent="." unique_id=711440038]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.943017, -0.849265, -0.402018)
 
-[node name="RootNode" type="Node3D" parent="bedroom"]
+[node name="RootNode" type="Node3D" parent="bedroom" unique_id=1879092791]
 transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0)
 
-[node name="BoxSpring-" type="Node3D" parent="bedroom/RootNode"]
+[node name="BoxSpring-" type="Node3D" parent="bedroom/RootNode" unique_id=970084924]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="BoxSpring-2" type="MeshInstance3D" parent="bedroom/RootNode/BoxSpring-"]
+[node name="BoxSpring-2" type="MeshInstance3D" parent="bedroom/RootNode/BoxSpring-" unique_id=1623026399]
 mesh = SubResource("ArrayMesh_6u856")
 skeleton = NodePath("")
 
-[node name="Mattress-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Mattress-" type="Node3D" parent="bedroom/RootNode" unique_id=1052867460]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Mattress-2" type="MeshInstance3D" parent="bedroom/RootNode/Mattress-"]
+[node name="Mattress-2" type="MeshInstance3D" parent="bedroom/RootNode/Mattress-" unique_id=1273147199]
 mesh = SubResource("ArrayMesh_g20ui")
 skeleton = NodePath("")
 
-[node name="Comforter1-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Comforter1-" type="Node3D" parent="bedroom/RootNode" unique_id=1378824507]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Comforter1-2" type="MeshInstance3D" parent="bedroom/RootNode/Comforter1-"]
+[node name="Comforter1-2" type="MeshInstance3D" parent="bedroom/RootNode/Comforter1-" unique_id=494898077]
 mesh = SubResource("ArrayMesh_h85ql")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Comforter1-/Comforter1-2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Comforter1-/Comforter1-2" unique_id=1835310823]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Comforter1-/Comforter1-2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Comforter1-/Comforter1-2/StaticBody3D" unique_id=325179266]
 shape = SubResource("ConcavePolygonShape3D_dphc6")
 
-[node name="Comforter2-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Comforter2-" type="Node3D" parent="bedroom/RootNode" unique_id=1163858350]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Comforter2-2" type="MeshInstance3D" parent="bedroom/RootNode/Comforter2-"]
+[node name="Comforter2-2" type="MeshInstance3D" parent="bedroom/RootNode/Comforter2-" unique_id=2799012]
 mesh = SubResource("ArrayMesh_l3j6r")
 skeleton = NodePath("")
 
-[node name="Pillows2-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Pillows2-" type="Node3D" parent="bedroom/RootNode" unique_id=1647144543]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Pillows2-2" type="MeshInstance3D" parent="bedroom/RootNode/Pillows2-"]
+[node name="Pillows2-2" type="MeshInstance3D" parent="bedroom/RootNode/Pillows2-" unique_id=224595378]
 mesh = ExtResource("8_dy8cc")
 skeleton = NodePath("")
 
-[node name="Pillows1-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Pillows1-" type="Node3D" parent="bedroom/RootNode" unique_id=511057945]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Pillows1-2" type="MeshInstance3D" parent="bedroom/RootNode/Pillows1-"]
+[node name="Pillows1-2" type="MeshInstance3D" parent="bedroom/RootNode/Pillows1-" unique_id=801208505]
 mesh = SubResource("ArrayMesh_t8hm0")
 skeleton = NodePath("")
 
-[node name="DeskTop-" type="Node3D" parent="bedroom/RootNode"]
+[node name="DeskTop-" type="Node3D" parent="bedroom/RootNode" unique_id=837801471]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="DeskTop-2" type="MeshInstance3D" parent="bedroom/RootNode/DeskTop-"]
+[node name="DeskTop-2" type="MeshInstance3D" parent="bedroom/RootNode/DeskTop-" unique_id=701513186]
 mesh = ExtResource("10_lpi73")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/DeskTop-/DeskTop-2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/DeskTop-/DeskTop-2" unique_id=497771466]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/DeskTop-/DeskTop-2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/DeskTop-/DeskTop-2/StaticBody3D" unique_id=1249460732]
 shape = SubResource("ConcavePolygonShape3D_d38gg")
 
-[node name="BoardIn-" type="Node3D" parent="bedroom/RootNode"]
+[node name="BoardIn-" type="Node3D" parent="bedroom/RootNode" unique_id=1845957834]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="BoardIn-2" type="MeshInstance3D" parent="bedroom/RootNode/BoardIn-"]
+[node name="BoardIn-2" type="MeshInstance3D" parent="bedroom/RootNode/BoardIn-" unique_id=1905277251]
 mesh = ExtResource("11_ts1h7")
 skeleton = NodePath("")
 
-[node name="BoardFrame-" type="Node3D" parent="bedroom/RootNode"]
+[node name="BoardFrame-" type="Node3D" parent="bedroom/RootNode" unique_id=607730828]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="BoardFrame-2" type="MeshInstance3D" parent="bedroom/RootNode/BoardFrame-"]
+[node name="BoardFrame-2" type="MeshInstance3D" parent="bedroom/RootNode/BoardFrame-" unique_id=1511859848]
 mesh = SubResource("ArrayMesh_18rm0")
 skeleton = NodePath("")
 
-[node name="Pic1Frame1-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Pic1Frame1-" type="Node3D" parent="bedroom/RootNode" unique_id=1720271453]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Pic1Frame1-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic1Frame1-"]
+[node name="Pic1Frame1-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic1Frame1-" unique_id=770369486]
 mesh = ExtResource("13_dng26")
 skeleton = NodePath("")
 
-[node name="MoldingT-" type="Node3D" parent="bedroom/RootNode"]
+[node name="MoldingT-" type="Node3D" parent="bedroom/RootNode" unique_id=903914754]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="MoldingT-2" type="MeshInstance3D" parent="bedroom/RootNode/MoldingT-"]
+[node name="MoldingT-2" type="MeshInstance3D" parent="bedroom/RootNode/MoldingT-" unique_id=24069595]
 mesh = SubResource("ArrayMesh_bew2o")
 skeleton = NodePath("")
 
-[node name="MoldingB-" type="Node3D" parent="bedroom/RootNode"]
+[node name="MoldingB-" type="Node3D" parent="bedroom/RootNode" unique_id=1684322869]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="MoldingB-2" type="MeshInstance3D" parent="bedroom/RootNode/MoldingB-"]
+[node name="MoldingB-2" type="MeshInstance3D" parent="bedroom/RootNode/MoldingB-" unique_id=876638660]
 mesh = SubResource("ArrayMesh_lii01")
 skeleton = NodePath("")
 
-[node name="Wall1-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Wall1-" type="Node3D" parent="bedroom/RootNode" unique_id=1692893058]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Wall1-2" type="MeshInstance3D" parent="bedroom/RootNode/Wall1-"]
+[node name="Wall1-2" type="MeshInstance3D" parent="bedroom/RootNode/Wall1-" unique_id=215547479]
 mesh = SubResource("ArrayMesh_g8xmn")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Wall1-/Wall1-2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Wall1-/Wall1-2" unique_id=1671202122]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Wall1-/Wall1-2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Wall1-/Wall1-2/StaticBody3D" unique_id=591937015]
 shape = SubResource("ConcavePolygonShape3D_r1duk")
 
-[node name="Wall2-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Wall2-" type="Node3D" parent="bedroom/RootNode" unique_id=1608470076]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Wall2-2" type="MeshInstance3D" parent="bedroom/RootNode/Wall2-"]
+[node name="Wall2-2" type="MeshInstance3D" parent="bedroom/RootNode/Wall2-" unique_id=658596207]
 mesh = SubResource("ArrayMesh_vr8mf")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Wall2-/Wall2-2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Wall2-/Wall2-2" unique_id=1892782038]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Wall2-/Wall2-2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Wall2-/Wall2-2/StaticBody3D" unique_id=547765138]
 shape = SubResource("ConcavePolygonShape3D_t56wl")
 
-[node name="Wall4-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Wall4-" type="Node3D" parent="bedroom/RootNode" unique_id=445247232]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Wall4-2" type="MeshInstance3D" parent="bedroom/RootNode/Wall4-"]
+[node name="Wall4-2" type="MeshInstance3D" parent="bedroom/RootNode/Wall4-" unique_id=2078646627]
 mesh = SubResource("ArrayMesh_uw3cs")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Wall4-/Wall4-2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Wall4-/Wall4-2" unique_id=408759625]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Wall4-/Wall4-2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Wall4-/Wall4-2/StaticBody3D" unique_id=864998947]
 shape = SubResource("ConcavePolygonShape3D_rrhf8")
 
-[node name="DoorWinFrames-" type="Node3D" parent="bedroom/RootNode"]
+[node name="DoorWinFrames-" type="Node3D" parent="bedroom/RootNode" unique_id=1230558136]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="DoorWinFrames-2" type="MeshInstance3D" parent="bedroom/RootNode/DoorWinFrames-"]
+[node name="DoorWinFrames-2" type="MeshInstance3D" parent="bedroom/RootNode/DoorWinFrames-" unique_id=1020252793]
 mesh = SubResource("ArrayMesh_l2ejk")
 skeleton = NodePath("")
 
-[node name="BlindsTop-" type="Node3D" parent="bedroom/RootNode"]
+[node name="BlindsTop-" type="Node3D" parent="bedroom/RootNode" unique_id=1947873627]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="BlindsTop-2" type="MeshInstance3D" parent="bedroom/RootNode/BlindsTop-"]
+[node name="BlindsTop-2" type="MeshInstance3D" parent="bedroom/RootNode/BlindsTop-" unique_id=278275861]
 mesh = ExtResource("20_qye63")
 skeleton = NodePath("")
 
-[node name="Blinds-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Blinds-" type="Node3D" parent="bedroom/RootNode" unique_id=1738391729]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Blinds-2" type="MeshInstance3D" parent="bedroom/RootNode/Blinds-"]
+[node name="Blinds-2" type="MeshInstance3D" parent="bedroom/RootNode/Blinds-" unique_id=255679074]
 mesh = SubResource("ArrayMesh_7f5wj")
 skeleton = NodePath("")
 
-[node name="BlindsRibbon-" type="Node3D" parent="bedroom/RootNode"]
+[node name="BlindsRibbon-" type="Node3D" parent="bedroom/RootNode" unique_id=2049347328]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, -6.47314, -2.8295e-07)
 
-[node name="BlindsRibbon-2" type="MeshInstance3D" parent="bedroom/RootNode/BlindsRibbon-"]
+[node name="BlindsRibbon-2" type="MeshInstance3D" parent="bedroom/RootNode/BlindsRibbon-" unique_id=1488020495]
 mesh = SubResource("ArrayMesh_mk5s8")
 skeleton = NodePath("")
 
-[node name="Pic4Frame1-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Pic4Frame1-" type="Node3D" parent="bedroom/RootNode" unique_id=136542868]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Pic4Frame1-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic4Frame1-"]
+[node name="Pic4Frame1-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic4Frame1-" unique_id=199361173]
 mesh = SubResource("ArrayMesh_qtg16")
 skeleton = NodePath("")
 
-[node name="Pic4Frame2-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Pic4Frame2-" type="Node3D" parent="bedroom/RootNode" unique_id=1450669293]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Pic4Frame2-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic4Frame2-"]
+[node name="Pic4Frame2-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic4Frame2-" unique_id=233238232]
 mesh = ExtResource("24_w0oci")
 skeleton = NodePath("")
 
-[node name="Mirror-Dresser-Frame-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Mirror-Dresser-Frame-" type="Node3D" parent="bedroom/RootNode" unique_id=1272664865]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Mirror-Dresser-Frame-2" type="MeshInstance3D" parent="bedroom/RootNode/Mirror-Dresser-Frame-"]
+[node name="Mirror-Dresser-Frame-2" type="MeshInstance3D" parent="bedroom/RootNode/Mirror-Dresser-Frame-" unique_id=2058245493]
 mesh = SubResource("ArrayMesh_0gryd")
 skeleton = NodePath("")
 
-[node name="Mirror-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Mirror-" type="Node3D" parent="bedroom/RootNode" unique_id=238770250]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Mirror-2" type="MeshInstance3D" parent="bedroom/RootNode/Mirror-"]
+[node name="Mirror-2" type="MeshInstance3D" parent="bedroom/RootNode/Mirror-" unique_id=1683750881]
 mesh = ExtResource("26_6j3lp")
 skeleton = NodePath("")
 
-[node name="LightStick-" type="Node3D" parent="bedroom/RootNode"]
+[node name="LightStick-" type="Node3D" parent="bedroom/RootNode" unique_id=1291444915]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="LightStick-2" type="MeshInstance3D" parent="bedroom/RootNode/LightStick-"]
+[node name="LightStick-2" type="MeshInstance3D" parent="bedroom/RootNode/LightStick-" unique_id=549423730]
 mesh = SubResource("ArrayMesh_s4iwo")
 skeleton = NodePath("")
 
-[node name="LampShade-" type="Node3D" parent="bedroom/RootNode"]
+[node name="LampShade-" type="Node3D" parent="bedroom/RootNode" unique_id=1584098234]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="LampShade-2" type="MeshInstance3D" parent="bedroom/RootNode/LampShade-"]
+[node name="LampShade-2" type="MeshInstance3D" parent="bedroom/RootNode/LampShade-" unique_id=157749022]
 mesh = SubResource("ArrayMesh_v8fim")
 skeleton = NodePath("")
 
-[node name="NightStand1-" type="Node3D" parent="bedroom/RootNode"]
+[node name="NightStand1-" type="Node3D" parent="bedroom/RootNode" unique_id=739694828]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="NightStand1-2" type="MeshInstance3D" parent="bedroom/RootNode/NightStand1-"]
+[node name="NightStand1-2" type="MeshInstance3D" parent="bedroom/RootNode/NightStand1-" unique_id=1879269099]
 mesh = SubResource("ArrayMesh_ryp8s")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/NightStand1-/NightStand1-2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/NightStand1-/NightStand1-2" unique_id=79498164]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/NightStand1-/NightStand1-2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/NightStand1-/NightStand1-2/StaticBody3D" unique_id=555929269]
 shape = SubResource("ConcavePolygonShape3D_4hscg")
 
-[node name="NightStand2-" type="Node3D" parent="bedroom/RootNode"]
+[node name="NightStand2-" type="Node3D" parent="bedroom/RootNode" unique_id=1446444715]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="NightStand2-2" type="MeshInstance3D" parent="bedroom/RootNode/NightStand2-"]
+[node name="NightStand2-2" type="MeshInstance3D" parent="bedroom/RootNode/NightStand2-" unique_id=317823639]
 mesh = SubResource("ArrayMesh_10iqw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/NightStand2-/NightStand2-2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/NightStand2-/NightStand2-2" unique_id=278016645]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/NightStand2-/NightStand2-2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/NightStand2-/NightStand2-2/StaticBody3D" unique_id=1047570399]
 shape = SubResource("ConcavePolygonShape3D_def2j")
 
-[node name="Dresser1-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Dresser1-" type="Node3D" parent="bedroom/RootNode" unique_id=1557316527]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Dresser1-2" type="MeshInstance3D" parent="bedroom/RootNode/Dresser1-"]
+[node name="Dresser1-2" type="MeshInstance3D" parent="bedroom/RootNode/Dresser1-" unique_id=2093425296]
 mesh = SubResource("ArrayMesh_o2a5c")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Dresser1-/Dresser1-2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Dresser1-/Dresser1-2" unique_id=395900523]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Dresser1-/Dresser1-2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Dresser1-/Dresser1-2/StaticBody3D" unique_id=954304363]
 shape = SubResource("ConcavePolygonShape3D_afqj5")
 
-[node name="Dresser2-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Dresser2-" type="Node3D" parent="bedroom/RootNode" unique_id=1929934759]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Dresser2-2" type="MeshInstance3D" parent="bedroom/RootNode/Dresser2-"]
+[node name="Dresser2-2" type="MeshInstance3D" parent="bedroom/RootNode/Dresser2-" unique_id=1288223048]
 mesh = SubResource("ArrayMesh_2j7ae")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Dresser2-/Dresser2-2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Dresser2-/Dresser2-2" unique_id=331964192]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Dresser2-/Dresser2-2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Dresser2-/Dresser2-2/StaticBody3D" unique_id=1125367619]
 shape = SubResource("ConcavePolygonShape3D_8mkla")
 
-[node name="Knobs2-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Knobs2-" type="Node3D" parent="bedroom/RootNode" unique_id=355207813]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Knobs2-2" type="MeshInstance3D" parent="bedroom/RootNode/Knobs2-"]
+[node name="Knobs2-2" type="MeshInstance3D" parent="bedroom/RootNode/Knobs2-" unique_id=1073885975]
 mesh = ExtResource("34_qevxg")
 skeleton = NodePath("")
 
-[node name="Knobs1-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Knobs1-" type="Node3D" parent="bedroom/RootNode" unique_id=226867280]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Knobs1-2" type="MeshInstance3D" parent="bedroom/RootNode/Knobs1-"]
+[node name="Knobs1-2" type="MeshInstance3D" parent="bedroom/RootNode/Knobs1-" unique_id=1200555038]
 mesh = ExtResource("35_enj4v")
 skeleton = NodePath("")
 
-[node name="BedFrame-" type="Node3D" parent="bedroom/RootNode"]
+[node name="BedFrame-" type="Node3D" parent="bedroom/RootNode" unique_id=985353823]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="BedFrame-2" type="MeshInstance3D" parent="bedroom/RootNode/BedFrame-"]
+[node name="BedFrame-2" type="MeshInstance3D" parent="bedroom/RootNode/BedFrame-" unique_id=598530694]
 mesh = SubResource("ArrayMesh_lsn0u")
 skeleton = NodePath("")
 
-[node name="Pic1Frame2-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Pic1Frame2-" type="Node3D" parent="bedroom/RootNode" unique_id=415141706]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Pic1Frame2-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic1Frame2-"]
+[node name="Pic1Frame2-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic1Frame2-" unique_id=451333200]
 mesh = ExtResource("37_7ryb5")
 skeleton = NodePath("")
 
-[node name="Pic3Frame1-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Pic3Frame1-" type="Node3D" parent="bedroom/RootNode" unique_id=1440631837]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Pic3Frame1-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic3Frame1-"]
+[node name="Pic3Frame1-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic3Frame1-" unique_id=1058072749]
 mesh = SubResource("ArrayMesh_vqg76")
 skeleton = NodePath("")
 
-[node name="Pic3Frame2-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Pic3Frame2-" type="Node3D" parent="bedroom/RootNode" unique_id=1468906419]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Pic3Frame2-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic3Frame2-"]
+[node name="Pic3Frame2-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic3Frame2-" unique_id=287243579]
 mesh = ExtResource("39_8ttmi")
 skeleton = NodePath("")
 
-[node name="Pic3Frame3-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Pic3Frame3-" type="Node3D" parent="bedroom/RootNode" unique_id=881271159]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Pic3Frame3-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic3Frame3-"]
+[node name="Pic3Frame3-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic3Frame3-" unique_id=380465149]
 mesh = SubResource("ArrayMesh_m4cat")
 skeleton = NodePath("")
 
-[node name="Chair-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Chair-" type="Node3D" parent="bedroom/RootNode" unique_id=1468267506]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Chair-2" type="MeshInstance3D" parent="bedroom/RootNode/Chair-"]
+[node name="Chair-2" type="MeshInstance3D" parent="bedroom/RootNode/Chair-" unique_id=515071686]
 mesh = SubResource("ArrayMesh_qv7jj")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Chair-/Chair-2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Chair-/Chair-2" unique_id=237078270]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Chair-/Chair-2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Chair-/Chair-2/StaticBody3D" unique_id=1164806577]
 shape = SubResource("ConcavePolygonShape3D_cfr1p")
 
-[node name="Desk-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Desk-" type="Node3D" parent="bedroom/RootNode" unique_id=1210028619]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Desk-2" type="MeshInstance3D" parent="bedroom/RootNode/Desk-"]
+[node name="Desk-2" type="MeshInstance3D" parent="bedroom/RootNode/Desk-" unique_id=183593602]
 mesh = SubResource("ArrayMesh_rtgkj")
 skeleton = NodePath("")
 
-[node name="DeskTrim-" type="Node3D" parent="bedroom/RootNode"]
+[node name="DeskTrim-" type="Node3D" parent="bedroom/RootNode" unique_id=1369968206]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="DeskTrim-2" type="MeshInstance3D" parent="bedroom/RootNode/DeskTrim-"]
+[node name="DeskTrim-2" type="MeshInstance3D" parent="bedroom/RootNode/DeskTrim-" unique_id=129907827]
 mesh = ExtResource("43_tl27y")
 skeleton = NodePath("")
 
-[node name="DeskHandles-" type="Node3D" parent="bedroom/RootNode"]
+[node name="DeskHandles-" type="Node3D" parent="bedroom/RootNode" unique_id=559092623]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="DeskHandles-2" type="MeshInstance3D" parent="bedroom/RootNode/DeskHandles-"]
+[node name="DeskHandles-2" type="MeshInstance3D" parent="bedroom/RootNode/DeskHandles-" unique_id=1048888335]
 mesh = ExtResource("44_odxqa")
 skeleton = NodePath("")
 
-[node name="BBBack-" type="Node3D" parent="bedroom/RootNode"]
+[node name="BBBack-" type="Node3D" parent="bedroom/RootNode" unique_id=2093030841]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="BBBack-2" type="MeshInstance3D" parent="bedroom/RootNode/BBBack-"]
+[node name="BBBack-2" type="MeshInstance3D" parent="bedroom/RootNode/BBBack-" unique_id=1264477602]
 mesh = SubResource("ArrayMesh_yuans")
 skeleton = NodePath("")
 
-[node name="BBStrings-" type="Node3D" parent="bedroom/RootNode"]
+[node name="BBStrings-" type="Node3D" parent="bedroom/RootNode" unique_id=1972275334]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="BBStrings-2" type="MeshInstance3D" parent="bedroom/RootNode/BBStrings-"]
+[node name="BBStrings-2" type="MeshInstance3D" parent="bedroom/RootNode/BBStrings-" unique_id=565405608]
 mesh = SubResource("ArrayMesh_3vttp")
 skeleton = NodePath("")
 
-[node name="Wall3-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Wall3-" type="Node3D" parent="bedroom/RootNode" unique_id=108284423]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Wall3-2" type="MeshInstance3D" parent="bedroom/RootNode/Wall3-"]
+[node name="Wall3-2" type="MeshInstance3D" parent="bedroom/RootNode/Wall3-" unique_id=545531306]
 mesh = SubResource("ArrayMesh_2fej3")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Wall3-/Wall3-2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Wall3-/Wall3-2" unique_id=1011944995]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Wall3-/Wall3-2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Wall3-/Wall3-2/StaticBody3D" unique_id=664158012]
 shape = SubResource("ConcavePolygonShape3D_iqis2")
 
-[node name="Door-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Door-" type="Node3D" parent="bedroom/RootNode" unique_id=1349852401]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Door-2" type="MeshInstance3D" parent="bedroom/RootNode/Door-"]
+[node name="Door-2" type="MeshInstance3D" parent="bedroom/RootNode/Door-" unique_id=693181207]
 mesh = SubResource("ArrayMesh_5fnl5")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Door-/Door-2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="bedroom/RootNode/Door-/Door-2" unique_id=2008556430]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Door-/Door-2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/RootNode/Door-/Door-2/StaticBody3D" unique_id=1443594756]
 shape = SubResource("ConcavePolygonShape3D_hwep2")
 
-[node name="DoorHandle-" type="Node3D" parent="bedroom/RootNode"]
+[node name="DoorHandle-" type="Node3D" parent="bedroom/RootNode" unique_id=1849774063]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="DoorHandle-2" type="MeshInstance3D" parent="bedroom/RootNode/DoorHandle-"]
+[node name="DoorHandle-2" type="MeshInstance3D" parent="bedroom/RootNode/DoorHandle-" unique_id=550724046]
 mesh = SubResource("ArrayMesh_atxu7")
 skeleton = NodePath("")
 
-[node name="DoorHandleBase-" type="Node3D" parent="bedroom/RootNode"]
+[node name="DoorHandleBase-" type="Node3D" parent="bedroom/RootNode" unique_id=1541951877]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="DoorHandleBase-2" type="MeshInstance3D" parent="bedroom/RootNode/DoorHandleBase-"]
+[node name="DoorHandleBase-2" type="MeshInstance3D" parent="bedroom/RootNode/DoorHandleBase-" unique_id=1677971923]
 mesh = SubResource("ArrayMesh_w2msp")
 skeleton = NodePath("")
 
-[node name="Hinges-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Hinges-" type="Node3D" parent="bedroom/RootNode" unique_id=544798753]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Hinges-2" type="MeshInstance3D" parent="bedroom/RootNode/Hinges-"]
+[node name="Hinges-2" type="MeshInstance3D" parent="bedroom/RootNode/Hinges-" unique_id=731827292]
 mesh = ExtResource("51_j1des")
 skeleton = NodePath("")
 
-[node name="FanHolder-" type="Node3D" parent="bedroom/RootNode"]
+[node name="FanHolder-" type="Node3D" parent="bedroom/RootNode" unique_id=1133374299]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="FanHolder-2" type="MeshInstance3D" parent="bedroom/RootNode/FanHolder-"]
+[node name="FanHolder-2" type="MeshInstance3D" parent="bedroom/RootNode/FanHolder-" unique_id=2140606628]
 mesh = SubResource("ArrayMesh_hjrkr")
 skeleton = NodePath("")
 
-[node name="FanBlades-" type="Node3D" parent="bedroom/RootNode"]
+[node name="FanBlades-" type="Node3D" parent="bedroom/RootNode" unique_id=555898562]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="FanBlades-2" type="MeshInstance3D" parent="bedroom/RootNode/FanBlades-"]
+[node name="FanBlades-2" type="MeshInstance3D" parent="bedroom/RootNode/FanBlades-" unique_id=885128741]
 mesh = SubResource("ArrayMesh_grqat")
 skeleton = NodePath("")
 
-[node name="FanBulb-" type="Node3D" parent="bedroom/RootNode"]
+[node name="FanBulb-" type="Node3D" parent="bedroom/RootNode" unique_id=40205861]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="FanBulb-2" type="MeshInstance3D" parent="bedroom/RootNode/FanBulb-"]
+[node name="FanBulb-2" type="MeshInstance3D" parent="bedroom/RootNode/FanBulb-" unique_id=315203696]
 mesh = ExtResource("54_8jg2h")
 skeleton = NodePath("")
 
-[node name="Rug-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Rug-" type="Node3D" parent="bedroom/RootNode" unique_id=47057068]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Rug-2" type="MeshInstance3D" parent="bedroom/RootNode/Rug-"]
+[node name="Rug-2" type="MeshInstance3D" parent="bedroom/RootNode/Rug-" unique_id=1517672192]
 mesh = SubResource("ArrayMesh_dy8cc")
 skeleton = NodePath("")
 
-[node name="OutShell-" type="Node3D" parent="bedroom/RootNode"]
+[node name="OutShell-" type="Node3D" parent="bedroom/RootNode" unique_id=417719316]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="OutShell-2" type="MeshInstance3D" parent="bedroom/RootNode/OutShell-"]
+[node name="OutShell-2" type="MeshInstance3D" parent="bedroom/RootNode/OutShell-" unique_id=579369235]
 mesh = ExtResource("57_518f2")
 skeleton = NodePath("")
 
-[node name="LightBulbLamp-" type="Node3D" parent="bedroom/RootNode"]
+[node name="LightBulbLamp-" type="Node3D" parent="bedroom/RootNode" unique_id=207046576]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="LightBulbLamp-2" type="MeshInstance3D" parent="bedroom/RootNode/LightBulbLamp-"]
+[node name="LightBulbLamp-2" type="MeshInstance3D" parent="bedroom/RootNode/LightBulbLamp-" unique_id=1069777254]
 mesh = ExtResource("58_yh3i4")
 skeleton = NodePath("")
 
-[node name="WindowsLedge--" type="Node3D" parent="bedroom/RootNode"]
+[node name="WindowsLedge--" type="Node3D" parent="bedroom/RootNode" unique_id=717266875]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="WindowsLedge--2" type="MeshInstance3D" parent="bedroom/RootNode/WindowsLedge--"]
+[node name="WindowsLedge--2" type="MeshInstance3D" parent="bedroom/RootNode/WindowsLedge--" unique_id=132793510]
 mesh = ExtResource("59_g8xmn")
 skeleton = NodePath("")
 
-[node name="Ceiling-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Ceiling-" type="Node3D" parent="bedroom/RootNode" unique_id=1736593439]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Ceiling-2" type="MeshInstance3D" parent="bedroom/RootNode/Ceiling-"]
+[node name="Ceiling-2" type="MeshInstance3D" parent="bedroom/RootNode/Ceiling-" unique_id=1554733860]
 mesh = SubResource("ArrayMesh_ehycm")
 skeleton = NodePath("")
 
-[node name="Floor-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Floor-" type="Node3D" parent="bedroom/RootNode" unique_id=1627773316]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Floor-2" type="MeshInstance3D" parent="bedroom/RootNode/Floor-"]
+[node name="Floor-2" type="MeshInstance3D" parent="bedroom/RootNode/Floor-" unique_id=1628438621]
 mesh = SubResource("ArrayMesh_v3nym")
 skeleton = NodePath("")
 
-[node name="BBPic1-" type="Node3D" parent="bedroom/RootNode"]
+[node name="BBPic1-" type="Node3D" parent="bedroom/RootNode" unique_id=1660955029]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="BBPic1-2" type="MeshInstance3D" parent="bedroom/RootNode/BBPic1-"]
+[node name="BBPic1-2" type="MeshInstance3D" parent="bedroom/RootNode/BBPic1-" unique_id=1320917903]
 mesh = ExtResource("63_l7hch")
 skeleton = NodePath("")
 
-[node name="BBPic2-" type="Node3D" parent="bedroom/RootNode"]
+[node name="BBPic2-" type="Node3D" parent="bedroom/RootNode" unique_id=368755215]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="BBPic2-2" type="MeshInstance3D" parent="bedroom/RootNode/BBPic2-"]
+[node name="BBPic2-2" type="MeshInstance3D" parent="bedroom/RootNode/BBPic2-" unique_id=896724072]
 mesh = ExtResource("64_0hc7s")
 skeleton = NodePath("")
 
-[node name="BBPic3-" type="Node3D" parent="bedroom/RootNode"]
+[node name="BBPic3-" type="Node3D" parent="bedroom/RootNode" unique_id=272655636]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="BBPic3-2" type="MeshInstance3D" parent="bedroom/RootNode/BBPic3-"]
+[node name="BBPic3-2" type="MeshInstance3D" parent="bedroom/RootNode/BBPic3-" unique_id=42242055]
 mesh = ExtResource("65_lyf43")
 skeleton = NodePath("")
 
-[node name="BBPic4-" type="Node3D" parent="bedroom/RootNode"]
+[node name="BBPic4-" type="Node3D" parent="bedroom/RootNode" unique_id=2144420269]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="BBPic4-2" type="MeshInstance3D" parent="bedroom/RootNode/BBPic4-"]
+[node name="BBPic4-2" type="MeshInstance3D" parent="bedroom/RootNode/BBPic4-" unique_id=1051989707]
 mesh = ExtResource("66_olne7")
 skeleton = NodePath("")
 
-[node name="BBPic5-" type="Node3D" parent="bedroom/RootNode"]
+[node name="BBPic5-" type="Node3D" parent="bedroom/RootNode" unique_id=1510044889]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="BBPic5-2" type="MeshInstance3D" parent="bedroom/RootNode/BBPic5-"]
+[node name="BBPic5-2" type="MeshInstance3D" parent="bedroom/RootNode/BBPic5-" unique_id=685096780]
 mesh = ExtResource("67_erb0q")
 skeleton = NodePath("")
 
-[node name="BlindStrings-" type="Node3D" parent="bedroom/RootNode"]
+[node name="BlindStrings-" type="Node3D" parent="bedroom/RootNode" unique_id=434084018]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -3594.17, 1433.18, -2323.76)
 
-[node name="BlindStrings-2" type="MeshInstance3D" parent="bedroom/RootNode/BlindStrings-"]
+[node name="BlindStrings-2" type="MeshInstance3D" parent="bedroom/RootNode/BlindStrings-" unique_id=54164624]
 mesh = ExtResource("68_1xdwr")
 skeleton = NodePath("")
 
-[node name="Pic1-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Pic1-" type="Node3D" parent="bedroom/RootNode" unique_id=275775832]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Pic1-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic1-"]
+[node name="Pic1-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic1-" unique_id=833912966]
 mesh = ExtResource("69_ioijr")
 skeleton = NodePath("")
 
-[node name="Pic2-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Pic2-" type="Node3D" parent="bedroom/RootNode" unique_id=2113898974]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Pic2-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic2-"]
+[node name="Pic2-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic2-" unique_id=995411265]
 mesh = ExtResource("70_xtwa1")
 skeleton = NodePath("")
 
-[node name="Pic3-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Pic3-" type="Node3D" parent="bedroom/RootNode" unique_id=1958392075]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Pic3-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic3-"]
+[node name="Pic3-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic3-" unique_id=2062192431]
 mesh = ExtResource("71_kgw42")
 skeleton = NodePath("")
 
-[node name="Pic4-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Pic4-" type="Node3D" parent="bedroom/RootNode" unique_id=1650507498]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Pic4-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic4-"]
+[node name="Pic4-2" type="MeshInstance3D" parent="bedroom/RootNode/Pic4-" unique_id=253634147]
 mesh = ExtResource("72_60gsk")
 skeleton = NodePath("")
 
-[node name="Windows-" type="Node3D" parent="bedroom/RootNode"]
+[node name="Windows-" type="Node3D" parent="bedroom/RootNode" unique_id=1727614738]
 transform = Transform3D(25.4, 0, 0, 0, 0, 25.4, 0, -25.4, 0, 0, 0, 0)
 
-[node name="Windows-2" type="MeshInstance3D" parent="bedroom/RootNode/Windows-"]
+[node name="Windows-2" type="MeshInstance3D" parent="bedroom/RootNode/Windows-" unique_id=1462560160]
 mesh = ExtResource("73_x54qx")
 skeleton = NodePath("")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=550879197]
 environment = SubResource("Environment_8h30a")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1638324919]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94511, 1.80769, -0.404433)
 light_color = Color(1, 1, 0.956863, 1)
 light_bake_mode = 1
@@ -1891,7 +1895,7 @@ shadow_enabled = true
 shadow_opacity = 0.59
 omni_range = 6.623
 
-[node name="LightmapGI" type="LightmapGI" parent="."]
+[node name="LightmapGI" type="LightmapGI" parent="." unique_id=962336891]
 transform = Transform3D(0.996234, -0.0867037, 0, 0.0867037, 0.996234, 0, 0, 0, 1, 0, 0, 0)
 quality = 2
 bounces = 10
@@ -1899,10 +1903,10 @@ directional = true
 interior = true
 light_data = ExtResource("46_yh3i4")
 
-[node name="SkeletonDebugMirror" parent="." instance=ExtResource("76_ts1h7")]
+[node name="SkeletonDebugMirror" parent="." unique_id=70498214 instance=ExtResource("76_ts1h7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18386269, -0.71337813, -2.936)
 
-[node name="SeatedModeLabel" type="Label3D" parent="."]
+[node name="SeatedModeLabel" type="Label3D" parent="." unique_id=1692463638]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3.7138119)
 no_depth_test = true
 text = "Press 'T' to toggle Seated Mode

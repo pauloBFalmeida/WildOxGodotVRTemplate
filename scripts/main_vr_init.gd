@@ -11,8 +11,10 @@ var xr_frame_rate : float = 0
 @export var target_refresh_rate : float = 72
 
 # Player scene paths
-var vr_player_path = "res://scenes/players/VRPlayer.tscn"
-var fps_player_path = "res://scenes/players/FPSPlayer.tscn"
+## = "res://scenes/players/VRPlayer.tscn"
+@export var vr_player : PackedScene
+## = "res://scenes/players/FPSPlayer.tscn"
+@export var fps_player : PackedScene
 
 # Reference to the current player instance
 var current_player: Node3D
@@ -99,8 +101,7 @@ func _find_closest(values : Array, target : float) -> float:
 
 func spawn_player(use_vr: bool):
 	# Load the appropriate player scene
-	var player_scene_path = vr_player_path if use_vr else fps_player_path
-	var player_scene = load(player_scene_path)
+	var player_scene = vr_player if use_vr else fps_player
 	
 	if player_scene:
 		var player_instance = player_scene.instantiate()
@@ -126,4 +127,4 @@ func spawn_player(use_vr: bool):
 		
 		print("Spawned " + ("VR" if use_vr else "FPS") + " player")
 	else:
-		push_error("Failed to load player scene: " + player_scene_path)
+		push_error("Failed to load player scene: " + player_scene.name)

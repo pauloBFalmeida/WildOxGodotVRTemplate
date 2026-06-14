@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b8qu42svaivr1"]
+[gd_scene format=3 uid="uid://b8qu42svaivr1"]
 
 [ext_resource type="Script" uid="uid://ctq8034oi4wau" path="res://raycast.gd" id="1_r2c84"]
 [ext_resource type="Script" uid="uid://0obl2pnek78a" path="res://scripts/VRHandCollider.gd" id="2_ke4ib"]
@@ -39,26 +39,26 @@ albedo_color = Color(0.734906, 0.0676843, 0.198859, 0.4)
 radius = 0.05
 height = 0.1
 
-[node name="XROrigin3D" type="XROrigin3D"]
+[node name="Player" type="XROrigin3D" unique_id=1264405577]
 
-[node name="XRCamera3D" type="XRCamera3D" parent="."]
+[node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=1709800189]
 
-[node name="LeftController" type="XRController3D" parent="."]
+[node name="LeftController" type="XRController3D" parent="." unique_id=169541002]
 tracker = &"left_hand"
 pose = &"grip"
 
-[node name="LeftControllerRayCast" type="RayCast3D" parent="LeftController"]
+[node name="LeftControllerRayCast" type="RayCast3D" parent="LeftController" unique_id=958672892]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.059, -0.052)
 target_position = Vector3(0, -10, 0)
 script = ExtResource("1_r2c84")
 
-[node name="Pointer" type="MeshInstance3D" parent="LeftController/LeftControllerRayCast"]
+[node name="Pointer" type="MeshInstance3D" parent="LeftController/LeftControllerRayCast" unique_id=1110327072]
 visible = false
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_ti1y2")
 surface_material_override/0 = SubResource("StandardMaterial3D_avl12")
 
-[node name="VRHandCollider" type="Area3D" parent="LeftController"]
+[node name="VRHandCollider" type="Area3D" parent="LeftController" unique_id=114424978]
 collision_mask = 9
 script = ExtResource("2_ke4ib")
 debug_sphere_color = Color(0.148614, 0.726923, 0.952147, 0.4)
@@ -67,29 +67,29 @@ grip_action = "grip_click"
 grip_threshold = 0.5
 metadata/_custom_type_script = "uid://0obl2pnek78a"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftController/VRHandCollider"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftController/VRHandCollider" unique_id=2064546066]
 shape = SubResource("SphereShape3D_2p3jf")
 
-[node name="DebugMesh" type="MeshInstance3D" parent="LeftController/VRHandCollider"]
+[node name="DebugMesh" type="MeshInstance3D" parent="LeftController/VRHandCollider" unique_id=510618872]
 material_override = SubResource("StandardMaterial3D_3ifg7")
 mesh = SubResource("SphereMesh_xi0i4")
 
-[node name="RightController" type="XRController3D" parent="."]
+[node name="RightController" type="XRController3D" parent="." unique_id=1146972471]
 tracker = &"right_hand"
 pose = &"grip"
 
-[node name="RightControllerRayCast" type="RayCast3D" parent="RightController"]
+[node name="RightControllerRayCast" type="RayCast3D" parent="RightController" unique_id=2089329582]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.059, -0.052)
 target_position = Vector3(0, -10, 0)
 script = ExtResource("1_r2c84")
 
-[node name="Pointer" type="MeshInstance3D" parent="RightController/RightControllerRayCast"]
+[node name="Pointer" type="MeshInstance3D" parent="RightController/RightControllerRayCast" unique_id=1148807367]
 visible = false
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_cr7io")
 surface_material_override/0 = SubResource("StandardMaterial3D_nfdh3")
 
-[node name="VRHandCollider" type="Area3D" parent="RightController"]
+[node name="VRHandCollider" type="Area3D" parent="RightController" unique_id=1098327966]
 collision_mask = 9
 script = ExtResource("2_ke4ib")
 debug_sphere_color = Color(0.734906, 0.0676843, 0.198859, 0.4)
@@ -98,18 +98,21 @@ grip_action = "grip_click"
 grip_threshold = 0.5
 metadata/_custom_type_script = "uid://0obl2pnek78a"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RightController/VRHandCollider"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightController/VRHandCollider" unique_id=796488122]
 shape = SubResource("SphereShape3D_2p3jf")
 
-[node name="DebugMesh" type="MeshInstance3D" parent="RightController/VRHandCollider"]
+[node name="DebugMesh" type="MeshInstance3D" parent="RightController/VRHandCollider" unique_id=249716946]
 material_override = SubResource("StandardMaterial3D_gjx8d")
 mesh = SubResource("SphereMesh_wi1mb")
 
-[node name="VRLocomotion" type="Node" parent="."]
+[node name="VRLocomotion" type="Node" parent="." unique_id=2142888002]
 script = ExtResource("2_uvuj7")
+speed = 1.0
+allow_sprinting = false
+allow_jumping = false
 metadata/_custom_type_script = "uid://gvf05fwc3p2p"
 
-[node name="VRIKComponent" type="Node" parent="."]
+[node name="VRIKComponent" type="Node" parent="." unique_id=1564130322]
 script = ExtResource("4_3ifg7")
 skeletal_mesh_scene = ExtResource("5_xi0i4")
 body_forward_offset = 0.15
@@ -124,5 +127,4 @@ right_hand_rotation_y = -92.495
 right_hand_rotation_z = -6.425
 debug_on_button_press = false
 show_controller_axes = true
-toggle_seated_key = null
 metadata/_custom_type_script = "uid://ci025t0r4hqgh"
