@@ -1,4 +1,5 @@
 @tool
+class_name FPSPlayer
 extends CharacterBody3D
 
 var BasicFPSPlayerScene : PackedScene = preload("basic_player_head.tscn")
@@ -104,6 +105,9 @@ func _process(delta):
 	if !UPDATE_PLAYER_ON_PHYS_STEP:
 		move_player(delta)
 		rotate_player(delta)
+	
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
 
 func toggle_fullscreen():
 	var current_mode = DisplayServer.window_get_mode()
