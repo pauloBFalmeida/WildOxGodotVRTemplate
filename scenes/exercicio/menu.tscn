@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://88yivv2vbeh3"]
+
+[ext_resource type="Script" uid="uid://cju4ldws6sfvd" path="res://scenes/exercicio/menu.gd" id="1_v6yj5"]
+
+[node name="Menu" type="Node3D" unique_id=1673835585]
+script = ExtResource("1_v6yj5")
+
+[node name="MenuPivot" type="Node3D" parent="." unique_id=1678958089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MenuPivot" unique_id=765115724]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MenuPivot/StaticBody3D" unique_id=1216380078]
+
+[node name="Label3D" type="Label3D" parent="MenuPivot/StaticBody3D" unique_id=436683919]
+billboard = 1
+text = "Fechar Menu"
