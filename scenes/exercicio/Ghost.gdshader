@@ -2,47 +2,42 @@ shader_type spatial;
 render_mode blend_mix, depth_draw_always, cull_back, unshaded;
 
 group_uniforms render;
-
 uniform sampler2D screen_texture : hint_screen_texture, filter_linear_mipmap;
 uniform sampler2D albedo_texture;
-
-uniform float opacity : hint_range(0.0, 5.0) = 0.35;
+uniform float opacity : hint_range(0.0, 1.0) = 0.35;
+// How much the background bleeds through the color (0 = fully opaque color, 1 = fully see-through)
+uniform float screen_blend : hint_range(0.0, 1.0) = 0.3;
 uniform vec4 ghost_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
-
 uniform float flicker_speed : hint_range(0.0, 5.0) = 1.2;
 uniform float phase_frequency : hint_range(0.0, 1.0) = 0.4;
-
 uniform float fresnel_strength : hint_range(0.0, 1.5) = 0.8;
 uniform vec3 fresnel_color : source_color = vec3(1.0, 1.0, 1.0);
-
-uniform float wave_amplitude: hint_range(0.0, 0.01) = 0.006;
-uniform float wave_frequency: hint_range(0.0, 20.0) = 19.397;
-uniform float wave_speed: hint_range(0.0, 10.0) = 3.618;
-uniform float chroma_amount: hint_range(0.0, 10.0) = 1.0;
+uniform float wave_amplitude : hint_range(0.0, 0.01) = 0.006;
+uniform float wave_frequency : hint_range(0.0, 20.0) = 19.397;
+uniform float wave_speed : hint_range(0.0, 10.0) = 3.618;
+uniform float chroma_amount : hint_range(0.0, 10.0) = 1.0;
 
 group_uniforms points;
-
 uniform bool points_enabled = true;
-uniform float point_field_scale: hint_range(1.0, 50.0) = 4.377;
-uniform float point_size: hint_range(0.001, 0.008) = 0.008;
-uniform float point_intensity: hint_range(0.0, 1.0) = 1.0;
-uniform float point_axis_speed: hint_range(0.0, 0.5) = 0.051;
-uniform int point_move_mode: hint_range(0, 3) = 1;
+uniform float point_field_scale : hint_range(1.0, 50.0) = 4.377;
+uniform float point_size : hint_range(0.001, 0.008) = 0.008;
+uniform float point_intensity : hint_range(0.0, 1.0) = 1.0;
+uniform float point_axis_speed : hint_range(0.0, 0.5) = 0.051;
+uniform int point_move_mode : hint_range(0, 3) = 1;
 uniform vec3 point_color : source_color = vec3(1.0, 1.0, 1.0);
 
-// Función de ruido
 float random(vec2 st) {
     return fract(sin(dot(st, vec2(12.9898, 78.233))) * 43758.5453123);
 }
 
 void fragment() {
+    // --- Chromatic aberration + screen distortion ---
     vec2 wave_offset = vec2(
         sin(SCREEN_UV.y * wave_frequency + TIME * wave_speed),
         sin(SCREEN_UV.x * wave_frequency + TIME * wave_speed)
     ) * wave_amplitude;
 
     vec2 distorted_uv = SCREEN_UV + wave_offset;
-
     vec2 red_uv   = distorted_uv + wave_offset * chroma_amount;
     vec2 blue_uv  = distorted_uv - wave_offset * chroma_amount;
     vec2 green_uv = distorted_uv;
@@ -52,19 +47,20 @@ void fragment() {
     float b = texture(screen_texture, blue_uv).b;
     vec3 screen_color = vec3(r, g, b);
 
-    float flicker = sin(TIME * flicker_speed) * 0.5 + 0.5;
-    float phase = sin(TIME * phase_frequency * 6.2831) * 0.5 + 0.5;
-
+    // --- Fresnel ---
     float fresnel_factor = pow(1.0 - dot(NORMAL, VIEW), 2.0) * fresnel_strength;
     vec3 fresnel = fresnel_color * fresnel_factor;
 
+    // --- Base ghost color ---
     vec4 base_texture = texture(albedo_texture, UV);
     vec3 base_color = base_texture.rgb * ghost_color.rgb;
 
+    // --- Point field ---
     float point_accum = 0.0;
     if (points_enabled) {
         vec2 moving_uv = UV;
         vec2 offset = vec2(0.0);
+
         if (point_move_mode == 0) {
             offset = vec2(0.0, TIME * point_axis_speed);
         } else if (point_move_mode == 1) {
@@ -93,19 +89,25 @@ void fragment() {
                 point_accum += point;
             }
         }
-
         point_accum = clamp(point_accum, 0.0, 1.0);
     }
 
-    vec4 final_color = vec4(base_color, ghost_color.a);
-    final_color.rgb = mix(final_color.rgb, screen_color, 0.6);
-    final_color.rgb += fresnel;
-    final_color.rgb = mix(final_color.rgb, point_color, point_intensity * point_accum);
+    // --- Compose ---
+    vec3 final_rgb = base_color;
 
-    float final_alpha = ghost_color.a * opacity * flicker * phase;
-    final_color.a = clamp(final_alpha, 0.0, 1.0);
+    // Screen blend: controlled by uniform (0 = solid ghost, 1 = invisible)
+    final_rgb = mix(final_rgb, screen_color, screen_blend);
 
-    EMISSION = final_color.rgb;
-    ALBEDO = final_color.rgb;
-    ALPHA = final_color.a;
+    // Fresnel rim on top
+    final_rgb += fresnel;
+
+    // Points
+    final_rgb = mix(final_rgb, point_color, point_intensity * point_accum);
+
+    // Alpha: ghost_color.a drives overall transparency, opacity is the master
+    float final_alpha = ghost_color.a * opacity;
+
+    EMISSION = final_rgb;
+    ALBEDO   = final_rgb;
+    ALPHA    = clamp(final_alpha, 0.0, 1.0);
 }
