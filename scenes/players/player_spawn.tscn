@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ch7fbvigjfei5"]
+
+[ext_resource type="Script" uid="uid://mxk2jj6yhl40" path="res://scenes/players/player_spawn.gd" id="1_8moih"]
+[ext_resource type="PackedScene" uid="uid://b8qu42svaivr1" path="res://scenes/players/VRPlayer.tscn" id="2_qr4hs"]
+[ext_resource type="PackedScene" uid="uid://b6dapij8f1iye" path="res://scenes/players/FPSPlayer.tscn" id="3_tfyik"]
+
+[node name="PlayerSpawn" type="Node3D" unique_id=297387570]
+script = ExtResource("1_8moih")
+vr_player = ExtResource("2_qr4hs")
+fps_player = ExtResource("3_tfyik")

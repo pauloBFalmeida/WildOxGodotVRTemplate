@@ -10,17 +10,7 @@ var xr_frame_rate : float = 0
 ## If non-zero, specifies the target refresh rate
 @export var target_refresh_rate : float = 72
 
-# Player scene paths
-## = "res://scenes/players/VRPlayer.tscn"
-@export var vr_player : PackedScene
-## = "res://scenes/players/FPSPlayer.tscn"
-@export var fps_player : PackedScene
-
-# Reference to the current player instance
-var current_player: Node3D
-
-# Spawn position for the player
-@export var player_spawn_path: NodePath
+@onready var player_spawn: PlayerSpawn = $PlayerSpawn
 
 func _ready():
 	xr_interface = XRServer.find_interface("OpenXR")
@@ -38,7 +28,7 @@ func _ready():
 		check_rendering_resolution()
 		
 		# Spawn VR player
-		spawn_player(true)
+		player_spawn.spawn_player(true)
 	else:
 		print("HMD Not Connected! Check Meta link or SteamVR connection")
 		
@@ -47,7 +37,7 @@ func _ready():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		
 		# Spawn FPS player
-		spawn_player(false)
+		player_spawn.spawn_player(false)
 
 # Set the XR frame rate to the configured value
 func _set_xr_frame_rate() -> void:
@@ -98,33 +88,3 @@ func _find_closest(values : Array, target : float) -> float:
 
 	# Return the best value
 	return best
-
-func spawn_player(use_vr: bool):
-	# Load the appropriate player scene
-	var player_scene = vr_player if use_vr else fps_player
-	
-	if player_scene:
-		var player_instance = player_scene.instantiate()
-		current_player = player_instance
-		
-		# Add to the main scene
-		var main_scene = get_tree().current_scene
-		main_scene.add_child(player_instance)
-		
-		# For desktop mode, ensure mouse capture
-		if not use_vr:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		
-		# Position the player at the spawn point if specified
-		if not player_spawn_path.is_empty():
-			var spawn_point = get_node_or_null(player_spawn_path)
-			if spawn_point:
-				player_instance.global_position = spawn_point.global_position
-				player_instance.global_rotation = spawn_point.global_rotation
-			else:
-				# Fallback position if spawn point not found
-				player_instance.global_position = Vector3(0, 1.7, 0)
-		
-		print("Spawned " + ("VR" if use_vr else "FPS") + " player")
-	else:
-		push_error("Failed to load player scene: " + player_scene.name)

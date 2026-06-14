@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://h5ktq382xcfd" path="res://scripts/main_vr_init.gd" id="1_dphc6"]
 [ext_resource type="Texture2D" uid="uid://bw6v4d6agwcyp" path="res://assets/textures/tilenormal.jpg" id="2_d38gg"]
-[ext_resource type="PackedScene" uid="uid://b8qu42svaivr1" path="res://scenes/players/VRPlayer.tscn" id="2_dng26"]
-[ext_resource type="PackedScene" uid="uid://b6dapij8f1iye" path="res://scenes/players/FPSPlayer.tscn" id="3_qye63"]
 [ext_resource type="Texture2D" uid="uid://br3wcdmcb663w" path="res://assets/textures/sci_fi_normal.jpg" id="3_r1duk"]
+[ext_resource type="PackedScene" uid="uid://ch7fbvigjfei5" path="res://scenes/players/player_spawn.tscn" id="4_ts1h7"]
 [ext_resource type="Material" uid="uid://b30wndgk86oi6" path="res://assets/bedroom/materials/BoxSping-.tres" id="5_rrhf8"]
 [ext_resource type="Material" uid="uid://6jgpq7s47fgm" path="res://assets/bedroom/materials/Matress-.tres" id="6_4hscg"]
 [ext_resource type="Material" uid="uid://206tsmvciptg" path="res://assets/bedroom/materials/Comforter1-.tres" id="7_def2j"]
@@ -1330,9 +1329,6 @@ glow_hdr_threshold = 3.47
 
 [node name="Main" type="Node3D" unique_id=777116426]
 script = ExtResource("1_dphc6")
-vr_player = ExtResource("2_dng26")
-fps_player = ExtResource("3_qye63")
-player_spawn_path = NodePath("PlayerSpawn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2085120649]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
@@ -1347,7 +1343,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00730515, 0, -0.00157547)
 shape = SubResource("BoxShape3D_x2jji")
 
-[node name="PlayerSpawn" type="Node3D" parent="." unique_id=1460526959]
+[node name="PlayerSpawn" parent="." unique_id=297387570 instance=ExtResource("4_ts1h7")]
 
 [node name="bedroom" type="Node3D" parent="." unique_id=711440038]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.943017, -0.849265, -0.402018)

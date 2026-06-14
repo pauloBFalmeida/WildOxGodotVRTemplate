@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://h5ktq382xcfd" path="res://scripts/main_vr_init.gd" id="1_27mce"]
 [ext_resource type="Texture2D" uid="uid://bw6v4d6agwcyp" path="res://assets/textures/tilenormal.jpg" id="1_vfxhw"]
 [ext_resource type="Texture2D" uid="uid://br3wcdmcb663w" path="res://assets/textures/sci_fi_normal.jpg" id="2_27mce"]
-[ext_resource type="PackedScene" uid="uid://b8qu42svaivr1" path="res://scenes/players/VRPlayer.tscn" id="2_q511t"]
-[ext_resource type="PackedScene" uid="uid://b6dapij8f1iye" path="res://scenes/players/FPSPlayer.tscn" id="3_55hi4"]
 [ext_resource type="PackedScene" uid="uid://dqd40ieyk2ifn" path="res://scenes/sky/SkySphere.tscn" id="4_68ddv"]
+[ext_resource type="PackedScene" uid="uid://ch7fbvigjfei5" path="res://scenes/players/player_spawn.tscn" id="4_q511t"]
 [ext_resource type="Material" uid="uid://8r7u7essx2rv" path="res://assets/battleroyal/M_PolygonBattleRoyale_01_A.tres" id="5_27mce"]
 [ext_resource type="LightmapGIData" uid="uid://bqlrg1aqcemoa" path="res://assets/battleroyal/lightmaps/Stationary.lmbake" id="6_kacge"]
 
@@ -115,9 +114,6 @@ _data = {
 
 [node name="Main" type="Node3D" unique_id=675466893]
 script = ExtResource("1_27mce")
-vr_player = ExtResource("2_q511t")
-fps_player = ExtResource("3_55hi4")
-player_spawn_path = NodePath("PlayerSpawn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=689621677]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
@@ -164,7 +160,7 @@ mesh = SubResource("PrismMesh_x2jji")
 transform = Transform3D(0.976785, -0.214131, -0.00618812, 0.214198, 0.976693, 0.0138127, 0.00308621, -0.0148176, 0.999886, 0.0132384, -0.259861, -7.7486e-05)
 shape = SubResource("BoxShape3D_34yur")
 
-[node name="PlayerSpawn" type="Node3D" parent="." unique_id=210255587]
+[node name="PlayerSpawn" parent="." unique_id=297387570 instance=ExtResource("4_q511t")]
 
 [node name="SkySphere" parent="." unique_id=2079290258 instance=ExtResource("4_68ddv")]
 

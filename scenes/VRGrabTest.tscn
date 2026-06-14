@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://h5ktq382xcfd" path="res://scripts/main_vr_init.gd" id="1_8m2mm"]
 [ext_resource type="Script" uid="uid://burniin4urqcb" path="res://scripts/Grippable.gd" id="2_a2doh"]
-[ext_resource type="PackedScene" uid="uid://b8qu42svaivr1" path="res://scenes/players/VRPlayer.tscn" id="2_qre0w"]
+[ext_resource type="PackedScene" uid="uid://ch7fbvigjfei5" path="res://scenes/players/player_spawn.tscn" id="2_rjimy"]
 [ext_resource type="PackedScene" uid="uid://dqd40ieyk2ifn" path="res://scenes/sky/SkySphere.tscn" id="3_58ejf"]
-[ext_resource type="PackedScene" uid="uid://b6dapij8f1iye" path="res://scenes/players/FPSPlayer.tscn" id="3_vk7ia"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gfq7l"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -48,11 +47,8 @@ radius = 0.07
 
 [node name="Main" type="Node3D" unique_id=951469190]
 script = ExtResource("1_8m2mm")
-vr_player = ExtResource("2_qre0w")
-fps_player = ExtResource("3_vk7ia")
-player_spawn_path = NodePath("../PlayerSpawn")
 
-[node name="PlayerSpawn" type="Node3D" parent="." unique_id=1923361474]
+[node name="PlayerSpawn" parent="." unique_id=297387570 instance=ExtResource("2_rjimy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="GrippableObjects" type="Node3D" parent="." unique_id=1387945244]
