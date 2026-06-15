@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://um1qyry50pil"]
+
+[ext_resource type="PackedScene" uid="uid://depf41kwyx1x4" path="res://assets/locais/mountain_dartmoor/glb/mountain_terrain_-_haytor_dartmoor_national_park.glb" id="1_h0fbr"]
+
+[node name="MountainDartmoor" type="Node3D" unique_id=17381020]
+
+[node name="Sketchfab_Scene" parent="." unique_id=815902518 instance=ExtResource("1_h0fbr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.803015, 42.87839, -0.043834925)
