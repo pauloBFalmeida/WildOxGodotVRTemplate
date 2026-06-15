@@ -59,7 +59,7 @@ skeleton = NodePath("../..")
 [node name="StoneCircle" parent="StaticBody3D" unique_id=1812162021 instance=ExtResource("7_gtwfb")]
 
 [node name="FastSky" parent="." unique_id=1363630946 instance=ExtResource("4_tvnop")]
-time_of_day = 0.28
+time_of_day = 0.72
 cloud_coverage = 0.0
 cloud_edge_softness = 1.0
 cloud_speed = 0.315

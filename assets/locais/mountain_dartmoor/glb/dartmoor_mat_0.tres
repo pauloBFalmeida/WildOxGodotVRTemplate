@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://brmq4v7wmroqn"]
+
+[ext_resource type="Texture2D" uid="uid://bw005r7c6srkx" path="res://assets/locais/mountain_dartmoor/glb/mountain_terrain_-_haytor_dartmoor_national_park_0.jpg" id="1_o0e32"]
+
+[resource]
+resource_name = "texture_material"
+cull_mode = 2
+albedo_color = Color(0.5609549, 0.5609549, 0.56095487, 1)
+albedo_texture = ExtResource("1_o0e32")

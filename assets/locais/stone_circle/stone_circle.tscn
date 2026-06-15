@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dsvr0x0pys1aq"]
 
 [ext_resource type="PackedScene" uid="uid://5ue47sdlh3jt" path="res://assets/locais/stone_circle/glb/moel_ty_uchaf_stone_circle_-_denbighshire.glb" id="1_n844j"]
+[ext_resource type="PackedScene" uid="uid://um1qyry50pil" path="res://assets/locais/mountain_dartmoor/mountain_dartmoor.tscn" id="2_0r834"]
 [ext_resource type="Texture2D" uid="uid://b6210hx8od03u" path="res://assets/locais/stone_circle/grassfield.jpg" id="2_5qibt"]
-[ext_resource type="PackedScene" uid="uid://depf41kwyx1x4" path="res://assets/locais/mountain_dartmoor/glb/mountain_terrain_-_haytor_dartmoor_national_park.glb" id="3_0r834"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_5qibt"]
 lightmap_size_hint = Vector2i(1002, 1002)
@@ -10,20 +10,19 @@ size = Vector2(800, 800)
 orientation = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lw07l"]
-shading_mode = 0
 disable_specular_occlusion = true
-albedo_color = Color(1, 0.9575, 0.83, 1)
+albedo_color = Color(0.58, 0.51098, 0.28419998, 1)
 albedo_texture = ExtResource("2_5qibt")
 uv1_scale = Vector3(1.5, 1.5, 1.5)
 distance_fade_mode = 2
 
 [node name="StoneCircle" type="Node3D" unique_id=1812162021]
 
-[node name="Sketchfab_Scene" parent="." unique_id=1129640721 instance=ExtResource("1_n844j")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.942, -12.393, -1.382)
+[node name="moel_ty_uchaf_stone_circle" parent="." unique_id=1746737220 instance=ExtResource("1_n844j")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.059431, -12.423719, -1.2256057)
 
-[node name="MontainDartmoor" parent="." unique_id=815902518 instance=ExtResource("3_0r834")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.514, 41.96, -13.207)
+[node name="MountainDartmoor" parent="." unique_id=17381020 instance=ExtResource("2_0r834")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1460056, -0.74095654, 15.731332)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=348387351]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -48.595413, 0)

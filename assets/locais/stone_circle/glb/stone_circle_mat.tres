@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cgcyp46titu6o"]
+
+[ext_resource type="Texture2D" uid="uid://2v5ct580ce5d" path="res://assets/locais/stone_circle/glb/moel_ty_uchaf_stone_circle_-_denbighshire_0.jpg" id="1_cdec7"]
+
+[resource]
+resource_name = "material_0"
+cull_mode = 2
+albedo_color = Color(0.728822, 0.728822, 0.728822, 1)
+albedo_texture = ExtResource("1_cdec7")
