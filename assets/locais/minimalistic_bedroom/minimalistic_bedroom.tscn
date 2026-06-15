@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bjjfe2vmdvjub"]
+
+[ext_resource type="PackedScene" uid="uid://cwuutbuhjdpic" path="res://assets/locais/minimalistic_bedroom/glb/minimalist_bedroom.glb" id="1_kdcbw"]
+
+[node name="MinimalisticBedroom" type="Node3D" unique_id=1072833289]
+
+[node name="minimalist_bedroom" parent="." unique_id=1911064842 instance=ExtResource("1_kdcbw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22482646, 1.6773276, -1.0118093)
