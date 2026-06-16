@@ -3,11 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://ciy061odqlosy" path="res://assets/pessoa/pessoa.blend" id="1_ycxcm"]
 [ext_resource type="Material" uid="uid://dcv0igw8nbjyj" path="res://assets/pessoa/ghost_shader_mat.tres" id="2_epyi2"]
 [ext_resource type="Material" uid="uid://c7ox5il2ckcvx" path="res://assets/pessoa/ghost_clothes_shader_mat.tres" id="3_8mdan"]
+[ext_resource type="PackedScene" uid="uid://cejhy0lwrkb66" path="res://assets/pessoa/pessoa_mov.blend" id="4_epyi2"]
 
 [node name="PessoaShaded" type="Node3D" unique_id=1576701182]
 
 [node name="pessoa" parent="." unique_id=116056196 instance=ExtResource("1_ycxcm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0026379675, 0, 0.053228736)
+visible = false
 
 [node name="Human" parent="pessoa/Human_rig/Skeleton3D" parent_id_path=PackedInt32Array(116056196, 1863533938) index="0" unique_id=1606086667]
 material_override = ExtResource("2_epyi2")
@@ -18,4 +20,36 @@ material_override = ExtResource("3_8mdan")
 [node name="Human_elvs_crude_t-shirt_male" parent="pessoa/Human_rig/Skeleton3D" parent_id_path=PackedInt32Array(116056196, 1863533938) index="2" unique_id=854901531]
 material_override = ExtResource("3_8mdan")
 
+[node name="pessoa_mov" parent="." unique_id=1722211865 instance=ExtResource("4_epyi2")]
+
+[node name="Skeleton3D" parent="pessoa_mov/Human_rig" parent_id_path=PackedInt32Array(1722211865, 1205842301) index="0" unique_id=1113947587]
+bones/4/rotation = Quaternion(0.06766697, -0.01343729, -0.015399531, 0.99749863)
+bones/5/position = Vector3(0.022850327, 0.25639653, 0.092591815)
+bones/5/rotation = Quaternion(0.0049917474, 0.044002187, -0.764789, 0.6427571)
+bones/6/rotation = Quaternion(0.05623883, 0.08379014, -0.54959625, 0.82931316)
+bones/7/rotation = Quaternion(0.124380976, -0.006251093, 0.01823926, 0.9920472)
+bones/8/rotation = Quaternion(0.10511571, 0.39631134, -0.018570324, 0.9118899)
+bones/24/position = Vector3(-0.022850282, 0.25639644, 0.09259181)
+bones/24/rotation = Quaternion(0.004991748, -0.044002187, 0.764789, 0.6427571)
+bones/25/rotation = Quaternion(0.100579634, -0.12848456, 0.53713983, 0.82756037)
+bones/26/rotation = Quaternion(0.099415086, 0.018443307, -0.007011695, 0.99485046)
+bones/40/rotation = Quaternion(-0.27830485, 0.70441926, 0.4294947, -0.49180713)
+bones/43/rotation = Quaternion(0.2516821, 0.008904799, -0.030663032, 0.9672832)
+bones/44/rotation = Quaternion(-0.19539988, 0.007884152, 0.030525224, 0.98021686)
+bones/45/rotation = Quaternion(0.9651156, 0.08017612, -0.21919037, -0.11865632)
+bones/49/rotation = Quaternion(0.9651156, -0.08017612, 0.21919037, -0.11865632)
+
+[node name="Human" parent="pessoa_mov/Human_rig/Skeleton3D" index="0" unique_id=1552176104]
+surface_material_override/0 = ExtResource("2_epyi2")
+
+[node name="Human_cortu_cargo_pants" parent="pessoa_mov/Human_rig/Skeleton3D" index="1" unique_id=900335]
+surface_material_override/0 = ExtResource("3_8mdan")
+
+[node name="Human_elvs_crude_t-shirt_male" parent="pessoa_mov/Human_rig/Skeleton3D" index="2" unique_id=602129150]
+surface_material_override/0 = ExtResource("3_8mdan")
+
+[node name="AnimationPlayer" parent="pessoa_mov" index="1" unique_id=1028455993]
+autoplay = &"Action"
+
 [editable path="pessoa"]
+[editable path="pessoa_mov"]
