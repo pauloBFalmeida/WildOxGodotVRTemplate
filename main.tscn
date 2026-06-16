@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c0ol8en13wpk3"]
+[gd_scene format=3 uid="uid://c0ol8en13wpk3"]
 
 [ext_resource type="Script" uid="uid://ccd7okcx07sj4" path="res://main.gd" id="1_t3hrc"]
 [ext_resource type="Script" uid="uid://ctq8034oi4wau" path="res://raycast.gd" id="2_5nsls"]
@@ -47,236 +47,236 @@ size = Vector3(1.44531, 0.297852, 0.102539)
 [sub_resource type="BoxMesh" id="BoxMesh_7ncv3"]
 size = Vector3(1.445, 0.3, 0.1)
 
-[node name="Main" type="XROrigin3D"]
+[node name="Main" type="XROrigin3D" unique_id=316479204]
 script = ExtResource("1_t3hrc")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=793290246]
 environment = SubResource("Environment_jc7i8")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=905083384]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1669627627]
 transform = Transform3D(-0.866025, -0.433013, 0.25, -0.12941, -0.288849, -0.948588, 0.482963, -0.853854, 0.194114, 0, 0, 0)
 
-[node name="XRCamera3D" type="XRCamera3D" parent="."]
+[node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=310813840]
 
-[node name="LeftController" type="XRController3D" parent="."]
+[node name="LeftController" type="XRController3D" parent="." unique_id=1157679805]
 tracker = &"left_hand"
 pose = &"grip"
 
-[node name="LeftControllerRayCast" type="RayCast3D" parent="LeftController"]
+[node name="LeftControllerRayCast" type="RayCast3D" parent="LeftController" unique_id=900494150]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.059, -0.052)
 target_position = Vector3(0, -10, 0)
 script = ExtResource("2_5nsls")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LeftController/LeftControllerRayCast"]
+[node name="Pointer" type="MeshInstance3D" parent="LeftController/LeftControllerRayCast" unique_id=1096163329]
 mesh = SubResource("CylinderMesh_75bh1")
 surface_material_override/0 = SubResource("StandardMaterial3D_vpekr")
 
-[node name="RightController" type="XRController3D" parent="."]
+[node name="RightController" type="XRController3D" parent="." unique_id=923087776]
 tracker = &"right_hand"
 pose = &"grip"
 
-[node name="RightControllerRayCast" type="RayCast3D" parent="RightController"]
+[node name="RightControllerRayCast" type="RayCast3D" parent="RightController" unique_id=1461289228]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.059, -0.052)
 target_position = Vector3(0, -10, 0)
 script = ExtResource("2_5nsls")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RightController/RightControllerRayCast"]
+[node name="Pointer" type="MeshInstance3D" parent="RightController/RightControllerRayCast" unique_id=973872936]
 mesh = SubResource("CylinderMesh_75bh1")
 surface_material_override/0 = SubResource("StandardMaterial3D_mguh3")
 
-[node name="InitializationInfo" type="Node3D" parent="."]
+[node name="InitializationInfo" type="Node3D" parent="." unique_id=641317897]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.831041, -3)
 
-[node name="InitializationLabel" type="Label3D" parent="InitializationInfo"]
+[node name="InitializationLabel" type="Label3D" parent="InitializationInfo" unique_id=1185728561]
 text = "SDK Initialization: "
 
-[node name="UserInfo" type="Node3D" parent="."]
+[node name="UserInfo" type="Node3D" parent="." unique_id=1016542851]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48694, -3)
 metadata/_edit_group_ = true
 
-[node name="UserImage" type="Sprite3D" parent="UserInfo"]
+[node name="UserImage" type="Sprite3D" parent="UserInfo" unique_id=338292620]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.450442, 0)
 pixel_size = 0.002
 texture = ExtResource("3_qj576")
 
-[node name="OculusIDLabel" type="Label3D" parent="UserInfo"]
+[node name="OculusIDLabel" type="Label3D" parent="UserInfo" unique_id=1080679582]
 text = "User Oculus ID: "
 
-[node name="EntitledLabel" type="Label3D" parent="UserInfo"]
+[node name="EntitledLabel" type="Label3D" parent="UserInfo" unique_id=2076603825]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.224751, 0)
 text = "User Entitled: "
 
-[node name="AchievementInfo" type="Node3D" parent="."]
+[node name="AchievementInfo" type="Node3D" parent="." unique_id=1565498945]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -2.11312, 1, -2.52491)
 metadata/_edit_group_ = true
 
-[node name="SimpleAchievementInfo" type="Node3D" parent="AchievementInfo"]
+[node name="SimpleAchievementInfo" type="Node3D" parent="AchievementInfo" unique_id=1649889362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15314, 0)
 
-[node name="SimpleAchievementLabel" type="Label3D" parent="AchievementInfo/SimpleAchievementInfo"]
+[node name="SimpleAchievementLabel" type="Label3D" parent="AchievementInfo/SimpleAchievementInfo" unique_id=1134489926]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199842, 0)
 text = "Press Button
 to Unlock
 Simple Achievement"
 
-[node name="SimpleAchievementButton" type="StaticBody3D" parent="AchievementInfo/SimpleAchievementInfo"]
+[node name="SimpleAchievementButton" type="StaticBody3D" parent="AchievementInfo/SimpleAchievementInfo" unique_id=189047600]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.297091, 0)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AchievementInfo/SimpleAchievementInfo/SimpleAchievementButton"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AchievementInfo/SimpleAchievementInfo/SimpleAchievementButton" unique_id=1647282846]
 shape = SubResource("BoxShape3D_me425")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AchievementInfo/SimpleAchievementInfo/SimpleAchievementButton"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AchievementInfo/SimpleAchievementInfo/SimpleAchievementButton" unique_id=285767821]
 mesh = SubResource("BoxMesh_14q82")
 surface_material_override/0 = SubResource("StandardMaterial3D_ck6b4")
 
-[node name="Label3D" type="Label3D" parent="AchievementInfo/SimpleAchievementInfo/SimpleAchievementButton"]
+[node name="Label3D" type="Label3D" parent="AchievementInfo/SimpleAchievementInfo/SimpleAchievementButton" unique_id=2017357731]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0689178)
 text = "Unlock"
 
-[node name="CountAchievementInfo" type="Node3D" parent="AchievementInfo"]
+[node name="CountAchievementInfo" type="Node3D" parent="AchievementInfo" unique_id=216977445]
 
-[node name="CountAchievementLabel" type="Label3D" parent="AchievementInfo/CountAchievementInfo"]
+[node name="CountAchievementLabel" type="Label3D" parent="AchievementInfo/CountAchievementInfo" unique_id=470105388]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199842, 0)
 text = "Press Button Three
 Times to Unlock
 Count Achievement"
 
-[node name="CountAchievementButton" type="StaticBody3D" parent="AchievementInfo/CountAchievementInfo"]
+[node name="CountAchievementButton" type="StaticBody3D" parent="AchievementInfo/CountAchievementInfo" unique_id=1248860160]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.297091, 0)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AchievementInfo/CountAchievementInfo/CountAchievementButton"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AchievementInfo/CountAchievementInfo/CountAchievementButton" unique_id=629304386]
 shape = SubResource("BoxShape3D_me425")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AchievementInfo/CountAchievementInfo/CountAchievementButton"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AchievementInfo/CountAchievementInfo/CountAchievementButton" unique_id=558145351]
 mesh = SubResource("BoxMesh_14q82")
 surface_material_override/0 = SubResource("StandardMaterial3D_ck6b4")
 
-[node name="Label3D" type="Label3D" parent="AchievementInfo/CountAchievementInfo/CountAchievementButton"]
+[node name="Label3D" type="Label3D" parent="AchievementInfo/CountAchievementInfo/CountAchievementButton" unique_id=214832087]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0689178)
 text = "Unlock"
 
-[node name="BitfieldAchievementInfo" type="Node3D" parent="AchievementInfo"]
+[node name="BitfieldAchievementInfo" type="Node3D" parent="AchievementInfo" unique_id=1925257964]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1892, 0)
 
-[node name="BitfieldAchievementLabel" type="Label3D" parent="AchievementInfo/BitfieldAchievementInfo"]
+[node name="BitfieldAchievementLabel" type="Label3D" parent="AchievementInfo/BitfieldAchievementInfo" unique_id=2090250187]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199842, 0)
 text = "Press Three of Five
 Buttons to Unlock
 Bitfield Achievement"
 
-[node name="BitfieldAchievementButton1" type="StaticBody3D" parent="AchievementInfo/BitfieldAchievementInfo"]
+[node name="BitfieldAchievementButton1" type="StaticBody3D" parent="AchievementInfo/BitfieldAchievementInfo" unique_id=1451031727]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, -0.297, 0)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton1" unique_id=872084640]
 shape = SubResource("BoxShape3D_r6q7v")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton1" unique_id=923142339]
 mesh = SubResource("BoxMesh_dy7is")
 surface_material_override/0 = SubResource("StandardMaterial3D_ck6b4")
 
-[node name="Label3D" type="Label3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton1"]
+[node name="Label3D" type="Label3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton1" unique_id=1966159373]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0689178)
 text = "1"
 
-[node name="BitfieldAchievementButton2" type="StaticBody3D" parent="AchievementInfo/BitfieldAchievementInfo"]
+[node name="BitfieldAchievementButton2" type="StaticBody3D" parent="AchievementInfo/BitfieldAchievementInfo" unique_id=930624841]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, -0.297, 0)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton2" unique_id=836122950]
 shape = SubResource("BoxShape3D_r6q7v")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton2" unique_id=1138922747]
 mesh = SubResource("BoxMesh_dy7is")
 surface_material_override/0 = SubResource("StandardMaterial3D_ck6b4")
 
-[node name="Label3D" type="Label3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton2"]
+[node name="Label3D" type="Label3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton2" unique_id=482955710]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0689178)
 text = "2"
 
-[node name="BitfieldAchievementButton3" type="StaticBody3D" parent="AchievementInfo/BitfieldAchievementInfo"]
+[node name="BitfieldAchievementButton3" type="StaticBody3D" parent="AchievementInfo/BitfieldAchievementInfo" unique_id=728791899]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.297091, 0)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton3" unique_id=1455046522]
 shape = SubResource("BoxShape3D_r6q7v")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton3" unique_id=1145388891]
 mesh = SubResource("BoxMesh_dy7is")
 surface_material_override/0 = SubResource("StandardMaterial3D_ck6b4")
 
-[node name="Label3D" type="Label3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton3"]
+[node name="Label3D" type="Label3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton3" unique_id=440929781]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0689178)
 text = "3"
 
-[node name="BitfieldAchievementButton4" type="StaticBody3D" parent="AchievementInfo/BitfieldAchievementInfo"]
+[node name="BitfieldAchievementButton4" type="StaticBody3D" parent="AchievementInfo/BitfieldAchievementInfo" unique_id=896142378]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, -0.297, 0)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton4" unique_id=1430402268]
 shape = SubResource("BoxShape3D_r6q7v")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton4" unique_id=1384457305]
 mesh = SubResource("BoxMesh_dy7is")
 surface_material_override/0 = SubResource("StandardMaterial3D_ck6b4")
 
-[node name="Label3D" type="Label3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton4"]
+[node name="Label3D" type="Label3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton4" unique_id=1649400692]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0689178)
 text = "4"
 
-[node name="BitfieldAchievementButton5" type="StaticBody3D" parent="AchievementInfo/BitfieldAchievementInfo"]
+[node name="BitfieldAchievementButton5" type="StaticBody3D" parent="AchievementInfo/BitfieldAchievementInfo" unique_id=732925948]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, -0.297, 0)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton5"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton5" unique_id=1751510816]
 shape = SubResource("BoxShape3D_r6q7v")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton5"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton5" unique_id=59449979]
 mesh = SubResource("BoxMesh_dy7is")
 surface_material_override/0 = SubResource("StandardMaterial3D_ck6b4")
 
-[node name="Label3D" type="Label3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton5"]
+[node name="Label3D" type="Label3D" parent="AchievementInfo/BitfieldAchievementInfo/BitfieldAchievementButton5" unique_id=320555799]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0689178)
 text = "5"
 
-[node name="IAPInfo" type="Node3D" parent="."]
+[node name="IAPInfo" type="Node3D" parent="." unique_id=1971637684]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 metadata/_edit_group_ = true
 
-[node name="IAPLabel" type="Label3D" parent="IAPInfo"]
+[node name="IAPLabel" type="Label3D" parent="IAPInfo" unique_id=1877653626]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199842, 0)
 text = "Press the button below
 to purchase in-app product"
 
-[node name="IAPButton" type="StaticBody3D" parent="IAPInfo"]
+[node name="IAPButton" type="StaticBody3D" parent="IAPInfo" unique_id=1616692749]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.297091, 0)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="IAPInfo/IAPButton"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IAPInfo/IAPButton" unique_id=870002244]
 shape = SubResource("BoxShape3D_yn5xr")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="IAPInfo/IAPButton"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="IAPInfo/IAPButton" unique_id=361021200]
 mesh = SubResource("BoxMesh_7ncv3")
 surface_material_override/0 = SubResource("StandardMaterial3D_ck6b4")
 
-[node name="Label3D" type="Label3D" parent="IAPInfo/IAPButton"]
+[node name="Label3D" type="Label3D" parent="IAPInfo/IAPButton" unique_id=41510949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0689178)
 text = "Purchase Product"
 
-[node name="FriendInfo" type="Node3D" parent="."]
+[node name="FriendInfo" type="Node3D" parent="." unique_id=1685055206]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.113, 1, -2.525)
 metadata/_edit_group_ = true
 
-[node name="FriendsLabel" type="Label3D" parent="FriendInfo"]
+[node name="FriendsLabel" type="Label3D" parent="FriendInfo" unique_id=1611326097]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.493917, 0)
 text = "Friends Who Own This App:"
 
-[node name="FriendNamesLabel" type="Label3D" parent="FriendInfo"]
+[node name="FriendNamesLabel" type="Label3D" parent="FriendInfo" unique_id=377141598]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.347479, 0)
 text = "None"
 

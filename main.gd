@@ -51,17 +51,17 @@ func _ready() -> void:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 		xr_interface.environment_blend_mode = XRInterface.XR_ENV_BLEND_MODE_ALPHA_BLEND
 
-	if ResourceLoader.exists("res://local.gd"):
-		var local = load('res://local.gd')
-		if local and "APPLICATION_ID" in local:
-			APPLICATION_ID = local.APPLICATION_ID
+	#if ResourceLoader.exists("res://local.gd"):
+		#var local = load('res://local.gd')
+		#if local and "APPLICATION_ID" in local:
+			#APPLICATION_ID = local.APPLICATION_ID
+#
+	#if APPLICATION_ID == "":
+		#initialization_label.text += "No app ID provided!"
+		#hide_non_initialization_info()
+		#return
 
-	if APPLICATION_ID == "":
-		initialization_label.text += "No app ID provided!"
-		hide_non_initialization_info()
-		return
-
-	initialize_platform_sdk()
+	#initialize_platform_sdk()
 
 
 func initialize_platform_sdk():
@@ -202,6 +202,8 @@ func hide_non_initialization_info():
 
 
 func update(collider_name):
+	print(collider_name)
+	
 	if not platform_sdk_initialized:
 		return
 

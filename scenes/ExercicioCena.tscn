@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://btno3xkhx82ol" path="res://scenes/sky/textures/Moon.png" id="6_gtwfb"]
 [ext_resource type="PackedScene" uid="uid://ch7fbvigjfei5" path="res://scenes/players/player_spawn.tscn" id="7_b64es"]
 [ext_resource type="PackedScene" uid="uid://dsvr0x0pys1aq" path="res://assets/locais/stone_circle/stone_circle.tscn" id="7_gtwfb"]
-[ext_resource type="PackedScene" uid="uid://88yivv2vbeh3" path="res://scenes/exercicio/menu.tscn" id="8_jiyx8"]
 [ext_resource type="PackedScene" uid="uid://chudfmf1yc60c" path="res://assets/pessoa/pessoa_shaded.tscn" id="10_tvnop"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_pfv2j"]
@@ -38,11 +37,9 @@ size = Vector3(1, 0.01, 1)
 [node name="Main" type="Node3D" unique_id=1742701099]
 script = ExtResource("1_pfv2j")
 
-[node name="Manager" type="Node" parent="." unique_id=1599871028 node_paths=PackedStringArray("menu")]
+[node name="Manager" type="Node" parent="." unique_id=1599871028 node_paths=PackedStringArray("player_spawn")]
 script = ExtResource("2_pidse")
-menu = NodePath("Menu")
-
-[node name="Menu" parent="Manager" unique_id=1673835585 instance=ExtResource("8_jiyx8")]
+player_spawn = NodePath("../PlayerSpawn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1487932884]
 

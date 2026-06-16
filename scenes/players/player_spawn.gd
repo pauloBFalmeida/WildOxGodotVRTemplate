@@ -1,6 +1,8 @@
 class_name PlayerSpawn
 extends Node3D
 
+signal player_spawned(player: Node3D)
+
 # Player scene paths
 ## = "res://scenes/players/VRPlayer.tscn"
 @export var vr_player : PackedScene
@@ -30,6 +32,8 @@ func spawn_player(use_vr: bool):
 		
 		player_instance.global_position = global_position
 		player_instance.global_rotation = global_rotation
+		
+		player_spawned.emit(player_instance)
 		
 		print("Spawned " + ("VR" if use_vr else "FPS") + " player")
 	else:
