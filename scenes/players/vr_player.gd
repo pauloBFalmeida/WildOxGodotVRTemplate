@@ -1,8 +1,8 @@
 class_name JogadorVR
 extends XROrigin3D
 
-@onready var hand_col_L: VRHandCollider = $LeftController/VRHandCollider
-@onready var hand_col_R: VRHandCollider = $RightController/VRHandCollider
+@export var hand_col_L: VRHandCollider
+@export var hand_col_R: VRHandCollider
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

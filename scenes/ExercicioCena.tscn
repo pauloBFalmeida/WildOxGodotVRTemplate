@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ch7fbvigjfei5" path="res://scenes/players/player_spawn.tscn" id="7_b64es"]
 [ext_resource type="PackedScene" uid="uid://dsvr0x0pys1aq" path="res://assets/locais/stone_circle/stone_circle.tscn" id="7_gtwfb"]
 [ext_resource type="PackedScene" uid="uid://chudfmf1yc60c" path="res://assets/pessoa/pessoa_shaded.tscn" id="10_tvnop"]
+[ext_resource type="Script" uid="uid://dtb6vk67vfgue" path="res://scenes/static_body_3d_2.gd" id="11_uufbc"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_pfv2j"]
 
@@ -33,6 +34,8 @@ uv1_offset = Vector3(1.01, 0.06, 0)
 [sub_resource type="BoxMesh" id="BoxMesh_3m01o"]
 material = SubResource("StandardMaterial3D_7mm3s")
 size = Vector3(1, 0.01, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gtwfb"]
 
 [node name="Main" type="Node3D" unique_id=1742701099]
 script = ExtResource("1_pfv2j")
@@ -89,3 +92,16 @@ spot_range = 15.0
 
 [node name="PessoaShaded" parent="." unique_id=1576701182 instance=ExtResource("10_tvnop")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16804653, -4.067563)
+
+[node name="StaticBody3D2" type="Area3D" parent="." unique_id=219103513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5491879, -2.0409155)
+script = ExtResource("11_uufbc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=920335306]
+shape = SubResource("SphereShape3D_gtwfb")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="StaticBody3D2" unique_id=1259659228]
+rings = 12
+
+[connection signal="area_entered" from="StaticBody3D2" to="StaticBody3D2" method="_on_area_entered"]
+[connection signal="area_exited" from="StaticBody3D2" to="StaticBody3D2" method="_on_area_exited"]

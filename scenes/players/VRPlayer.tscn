@@ -41,8 +41,10 @@ albedo_color = Color(0.734906, 0.0676843, 0.198859, 0.4)
 radius = 0.05
 height = 0.1
 
-[node name="Player" type="XROrigin3D" unique_id=1264405577]
+[node name="Player" type="XROrigin3D" unique_id=1264405577 node_paths=PackedStringArray("hand_col_L", "hand_col_R")]
 script = ExtResource("1_gjx8d")
+hand_col_L = NodePath("LeftController/VRHandCollider")
+hand_col_R = NodePath("RightController/VRHandCollider")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=1709800189]
 
@@ -74,6 +76,7 @@ metadata/_custom_type_script = "uid://0obl2pnek78a"
 shape = SubResource("SphereShape3D_2p3jf")
 
 [node name="DebugMesh" type="MeshInstance3D" parent="LeftController/VRHandCollider" unique_id=510618872]
+visible = false
 material_override = SubResource("StandardMaterial3D_gjx8d")
 mesh = SubResource("SphereMesh_wi1mb")
 
@@ -105,6 +108,7 @@ metadata/_custom_type_script = "uid://0obl2pnek78a"
 shape = SubResource("SphereShape3D_2p3jf")
 
 [node name="DebugMesh" type="MeshInstance3D" parent="RightController/VRHandCollider" unique_id=249716946]
+visible = false
 material_override = SubResource("StandardMaterial3D_4fjex")
 mesh = SubResource("SphereMesh_wjnam")
 

@@ -21,12 +21,9 @@ func _ajustar_jogador_vr(current_player: Node3D) -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	
+	print("jogadorVR")
 	print(jogadorVR)
-	#jogadorVR.hand_col_L.grabbed_object.connect(_grabbed)
-
-func _input(event: InputEvent) -> void:
-	print()
-	print(event)
+	jogadorVR.hand_col_L.object_grabbed.connect(_grabbed)
 
 func _grabbed(obj: Node3D) -> void:
 	print("grabbed")

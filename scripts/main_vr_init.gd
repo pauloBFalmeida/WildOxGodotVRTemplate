@@ -88,3 +88,11 @@ func _find_closest(values : Array, target : float) -> float:
 
 	# Return the best value
 	return best
+
+
+func _on_static_body_3d_2_area_entered(area: Area3D) -> void:
+	pass # Replace with function body.
+
+
+func _on_static_body_3d_2_area_exited(area: Area3D) -> void:
+	pass # Replace with function body.
