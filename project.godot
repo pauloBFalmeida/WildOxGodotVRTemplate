@@ -19,6 +19,10 @@ run/main_scene="uid://cval6fxkfvenc"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameGlobal="*uid://cmdyedy2f0tym"
+
 [display]
 
 window/vsync/vsync_mode=0

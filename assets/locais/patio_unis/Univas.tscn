@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cmybka1y3r57y"]
+
+[ext_resource type="PackedScene" uid="uid://dvk0unomvwe7f" path="res://assets/locais/patio_unis/glb/patio_clean.glb" id="1_nwqer"]
+
+[node name="Univas" type="Node3D" unique_id=26912560]
+transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -0.25925612, 0, 0)
+
+[node name="patio_clean" parent="." unique_id=1265028322 instance=ExtResource("1_nwqer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8333616, -0.079748034, 11.998686)

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://k6ao5c641m6a"]
+
+[ext_resource type="Script" uid="uid://dtb6vk67vfgue" path="res://scenes/static_body_3d_2.gd" id="1_pltb2"]
+[ext_resource type="Material" uid="uid://bucdjhjwc173f" path="res://scenes/exercicio/movimentos/ghost_touch_shader_mat.tres" id="2_t62jt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gtwfb"]
+radius = 0.25
+
+[node name="Marcador" type="Area3D" unique_id=2035316379]
+collision_layer = 16
+script = ExtResource("1_pltb2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1679610837]
+shape = SubResource("SphereShape3D_gtwfb")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1800122169]
+radius = 0.2
+radial_segments = 32
+rings = 16
+material = ExtResource("2_t62jt")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

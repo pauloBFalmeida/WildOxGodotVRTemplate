@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bucdjhjwc173f"]
+
+[ext_resource type="Shader" uid="uid://dsm6unj8hsm7q" path="res://scenes/exercicio/Ghost.gdshader" id="1_4cqjg"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4cqjg")
+shader_parameter/opacity = 0.6000000285
+shader_parameter/screen_blend = 0.30000001425
+shader_parameter/ghost_color = Color(0.111359276, 0.6029052, 0, 1)
+shader_parameter/flicker_speed = 0.0
+shader_parameter/phase_frequency = 0.0
+shader_parameter/fresnel_strength = 0.70000003325
+shader_parameter/fresnel_color = Color(0.7407425, 0.6083377, 0, 1)
+shader_parameter/wave_amplitude = 0.00400000019
+shader_parameter/wave_frequency = 5.9730002837175
+shader_parameter/wave_speed = 0.3410000161975
+shader_parameter/chroma_amount = 0.10000000475
+shader_parameter/points_enabled = true
+shader_parameter/point_field_scale = 10.98800047443
+shader_parameter/point_size = 0.00800000037998
+shader_parameter/point_intensity = 0.846000040185
+shader_parameter/point_axis_speed = 0.058000002755
+shader_parameter/point_move_mode = 0
+shader_parameter/point_color = Color(0.88, 0.82192004, 0.58959997, 1)
