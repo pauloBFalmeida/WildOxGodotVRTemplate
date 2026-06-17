@@ -16,6 +16,7 @@ func _prox() -> void:
 		return
 	
 	var pos : PosExercicio = posicoes.pop_front()
+	pos.show()
 	pos.iniciar()
 	pos.fim.connect(_prox)
 
