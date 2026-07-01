@@ -27,6 +27,7 @@ GameGlobal="*uid://cmdyedy2f0tym"
 
 window/size/viewport_width=1024
 window/size/viewport_height=768
+window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
 [global_group]

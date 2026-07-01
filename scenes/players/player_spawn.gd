@@ -3,6 +3,8 @@ extends Node3D
 
 signal player_spawned(player: Node3D)
 
+@export var force_non_vr: bool = false
+
 # Player scene paths
 ## = "res://scenes/players/VRPlayer.tscn"
 @export var vr_player : PackedScene
@@ -14,6 +16,8 @@ var current_player: Node3D
 
 
 func spawn_player(use_vr: bool):
+	if force_non_vr: use_vr = false
+	
 	# Load the appropriate player scene
 	var player_scene = vr_player if use_vr else fps_player
 	
