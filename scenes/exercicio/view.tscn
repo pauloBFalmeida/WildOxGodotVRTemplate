@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bvdkcuiv8c8e7"]
+
+[ext_resource type="PackedScene" uid="uid://c8yr7w1tgi71k" path="res://scenes/exercicio/hud.tscn" id="1_ck8v1"]
+
+[node name="View" type="SubViewport" unique_id=1497871950]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(1024, 768)
+
+[node name="Hud" parent="." unique_id=1375680032 instance=ExtResource("1_ck8v1")]

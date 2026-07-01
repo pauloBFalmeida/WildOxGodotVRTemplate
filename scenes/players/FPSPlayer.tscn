@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ce26h3fs1ro4l" path="res://addons/Basic FPS Player/Src/basic_player_startup.gd" id="1_r8asr"]
 [ext_resource type="PackedScene" uid="uid://kmyakts4l64t" path="res://addons/Basic FPS Player/Src/basic_player_head.tscn" id="2_2cmq1"]
+[ext_resource type="PackedScene" uid="uid://88yivv2vbeh3" path="res://scenes/exercicio/menu.tscn" id="3_q3blt"]
+[ext_resource type="PackedScene" uid="uid://c8yr7w1tgi71k" path="res://scenes/exercicio/hud.tscn" id="4_5k355"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_li7ud"]
 radius = 0.326874
@@ -23,5 +25,12 @@ KEY_BIND_JUMP = "Jump"
 [node name="Head" parent="." unique_id=960213897 instance=ExtResource("2_2cmq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.412659, 0)
 
+[node name="Menu" parent="Head/Camera3D" index="0" unique_id=1673835585 instance=ExtResource("3_q3blt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0943155, -0.63266754)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1868299171]
 shape = SubResource("CapsuleShape3D_li7ud")
+
+[node name="Hud" parent="." unique_id=1375680032 instance=ExtResource("4_5k355")]
+
+[editable path="Head"]

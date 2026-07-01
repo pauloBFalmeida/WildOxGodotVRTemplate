@@ -1,7 +1,10 @@
 class_name Marcadores
 extends Node3D
 
-@export var hud: Hud
+var hud: Hud
+
+@export var tempo_inspirar: float = 5.0
+@export var tempo_expirar: float = 5.0
 
 var posicoes: Array[PosExercicio]
 
@@ -11,6 +14,8 @@ func _ready() -> void:
 			posicoes.append(c)
 			c.hide()
 	
+	await get_tree().create_timer(0.1).timeout
+	hud = get_tree().get_first_node_in_group("HUD")
 
 
 func _prox() -> void:
@@ -34,9 +39,9 @@ func _process(_delta: float) -> void:
 
 func _mostrar_respiracao(inspirar: bool) -> void:
 	if inspirar:
-		hud.inspire(3.5)
+		hud.inspire(tempo_inspirar)
 	else:
-		hud.expire(3.5)
+		hud.expire(tempo_expirar)
 
 func iniciar() -> void:
 	#_prox()

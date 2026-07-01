@@ -4,9 +4,21 @@
 [ext_resource type="Script" uid="uid://ctq8034oi4wau" path="res://raycast.gd" id="1_r2c84"]
 [ext_resource type="Script" uid="uid://0obl2pnek78a" path="res://scripts/VRHandCollider.gd" id="2_ke4ib"]
 [ext_resource type="Script" uid="uid://gvf05fwc3p2p" path="res://scripts/VRLocomotion.gd" id="2_uvuj7"]
+[ext_resource type="PackedScene" uid="uid://bvdkcuiv8c8e7" path="res://scenes/exercicio/view.tscn" id="3_wi1mb"]
 [ext_resource type="Script" uid="uid://ci025t0r4hqgh" path="res://scripts/VRIKComponent.gd" id="4_3ifg7"]
 [ext_resource type="PackedScene" uid="uid://d2w7np4afrg4r" path="res://assets/skeletalmesh/T-Pose.fbx" id="5_xi0i4"]
 [ext_resource type="PackedScene" uid="uid://88yivv2vbeh3" path="res://scenes/exercicio/menu.tscn" id="6_xi0i4"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_smq05"]
+size = Vector2(4, 3)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_r1cyw"]
+viewport_path = NodePath("XRCamera3D/MeshInstance3D/View")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mb8b7"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_r1cyw")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ti1y2"]
 top_radius = 0.005
@@ -18,11 +30,11 @@ shading_mode = 0
 [sub_resource type="SphereShape3D" id="SphereShape3D_2p3jf"]
 radius = 0.05
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjx8d"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wi1mb"]
 transparency = 1
 albedo_color = Color(0.148614, 0.726923, 0.952147, 0.4)
 
-[sub_resource type="SphereMesh" id="SphereMesh_wi1mb"]
+[sub_resource type="SphereMesh" id="SphereMesh_4fjex"]
 radius = 0.05
 height = 0.1
 
@@ -33,11 +45,11 @@ bottom_radius = 0.005
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nfdh3"]
 shading_mode = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fjex"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjnam"]
 transparency = 1
 albedo_color = Color(0.734906, 0.0676843, 0.198859, 0.4)
 
-[sub_resource type="SphereMesh" id="SphereMesh_wjnam"]
+[sub_resource type="SphereMesh" id="SphereMesh_ei1xs"]
 radius = 0.05
 height = 0.1
 
@@ -49,7 +61,14 @@ hand_col_R = NodePath("RightController/VRHandCollider")
 [node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=1709800189]
 
 [node name="Menu" parent="XRCamera3D" unique_id=1673835585 instance=ExtResource("6_xi0i4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.62974006, -1.4196578)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2485744, -1.6492419)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XRCamera3D" unique_id=645308110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25590515, -1.7794914)
+mesh = SubResource("QuadMesh_smq05")
+surface_material_override/0 = SubResource("StandardMaterial3D_mb8b7")
+
+[node name="View" parent="XRCamera3D/MeshInstance3D" unique_id=1497871950 instance=ExtResource("3_wi1mb")]
 
 [node name="LeftController" type="XRController3D" parent="." unique_id=169541002]
 tracker = &"left_hand"
@@ -81,8 +100,8 @@ shape = SubResource("SphereShape3D_2p3jf")
 
 [node name="DebugMesh" type="MeshInstance3D" parent="LeftController/VRHandCollider" unique_id=510618872]
 visible = false
-material_override = SubResource("StandardMaterial3D_gjx8d")
-mesh = SubResource("SphereMesh_wi1mb")
+material_override = SubResource("StandardMaterial3D_wi1mb")
+mesh = SubResource("SphereMesh_4fjex")
 
 [node name="RightController" type="XRController3D" parent="." unique_id=1146972471]
 tracker = &"right_hand"
@@ -114,8 +133,8 @@ shape = SubResource("SphereShape3D_2p3jf")
 
 [node name="DebugMesh" type="MeshInstance3D" parent="RightController/VRHandCollider" unique_id=249716946]
 visible = false
-material_override = SubResource("StandardMaterial3D_4fjex")
-mesh = SubResource("SphereMesh_wjnam")
+material_override = SubResource("StandardMaterial3D_wjnam")
+mesh = SubResource("SphereMesh_ei1xs")
 
 [node name="VRLocomotion" type="Node" parent="." unique_id=2142888002]
 script = ExtResource("2_uvuj7")

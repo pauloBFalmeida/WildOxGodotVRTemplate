@@ -17,7 +17,7 @@ func inspire(tempo: float) -> void:
 	
 	var tween := create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
-	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(
 		circulo_preenc,
 		"scale",
@@ -37,7 +37,7 @@ func expire(tempo: float) -> void:
 	
 	var tween := create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
-	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_ease(Tween.EASE_IN)
 	tween.tween_property(
 		circulo_preenc,
 		"scale",

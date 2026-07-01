@@ -2,7 +2,6 @@ extends Node
 
 @export var player_spawn: PlayerSpawn
 
-@onready var hud: Hud = $Hud
 @onready var marcadores: Marcadores = $"../Marcadores"
 @onready var treinador: Treinador = $"../Treinador"
 

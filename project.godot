@@ -25,7 +25,13 @@ GameGlobal="*uid://cmdyedy2f0tym"
 
 [display]
 
+window/size/viewport_width=1024
+window/size/viewport_height=768
 window/vsync/vsync_mode=0
+
+[global_group]
+
+HUD=""
 
 [input]
 

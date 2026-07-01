@@ -3,10 +3,7 @@
 [ext_resource type="Script" uid="uid://h5ktq382xcfd" path="res://scripts/main_vr_init.gd" id="1_pfv2j"]
 [ext_resource type="Texture2D" uid="uid://bw6v4d6agwcyp" path="res://assets/textures/tilenormal.jpg" id="2_jiyx8"]
 [ext_resource type="Script" uid="uid://cht4xh1uwl6sf" path="res://scenes/exercicio/manager.gd" id="2_pidse"]
-[ext_resource type="Script" uid="uid://d0eggpisr5n6q" path="res://scenes/hud.gd" id="3_akrpu"]
-[ext_resource type="Texture2D" uid="uid://de7dtly0chqpb" path="res://assets/movimento/circulo_preenc.png" id="3_b64es"]
 [ext_resource type="Texture2D" uid="uid://br3wcdmcb663w" path="res://assets/textures/sci_fi_normal.jpg" id="3_pidse"]
-[ext_resource type="Texture2D" uid="uid://bnnxkpaeevb78" path="res://assets/movimento/circulo.png" id="4_akrpu"]
 [ext_resource type="PackedScene" uid="uid://fblcle4cgh20" path="res://scenes/sky/FastSky.tscn" id="4_tvnop"]
 [ext_resource type="Texture2D" uid="uid://c2qiwgoh17uae" path="res://scenes/sky/textures/Sun.png" id="5_uufbc"]
 [ext_resource type="Script" uid="uid://cxswfywu1i0bu" path="res://scenes/cenario.gd" id="6_7ba54"]
@@ -48,56 +45,6 @@ script = ExtResource("1_pfv2j")
 [node name="Manager" type="Node" parent="." unique_id=1599871028 node_paths=PackedStringArray("player_spawn")]
 script = ExtResource("2_pidse")
 player_spawn = NodePath("../PlayerSpawn")
-
-[node name="Hud" type="Control" parent="Manager" unique_id=1776260528]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("3_akrpu")
-
-[node name="Meio" type="Control" parent="Manager/Hud" unique_id=449267923]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = 73.0
-offset_right = 0.5
-offset_bottom = 74.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Base" type="Node2D" parent="Manager/Hud/Meio" unique_id=977229946]
-position = Vector2(0, 91.5)
-scale = Vector2(0.2, 0.2)
-
-[node name="CirculoPreenc" type="Sprite2D" parent="Manager/Hud/Meio/Base" unique_id=126042302]
-self_modulate = Color(1, 1, 1, 0.6666667)
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("3_b64es")
-
-[node name="Circulo" type="Sprite2D" parent="Manager/Hud/Meio/Base" unique_id=1135954335]
-self_modulate = Color(0.11, 0.11, 0.11, 0.78431374)
-texture = ExtResource("4_akrpu")
-
-[node name="Texto" type="Label" parent="Manager/Hud/Meio" unique_id=225423174]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -33.5
-offset_right = 33.5
-offset_bottom = 28.0
-grow_horizontal = 2
-theme_override_constants/outline_size = 12
-theme_override_font_sizes/font_size = 20
-text = "Inspire"
-horizontal_alignment = 1
 
 [node name="Cenario" type="StaticBody3D" parent="." unique_id=1487932884]
 script = ExtResource("6_7ba54")
@@ -143,10 +90,9 @@ moon_texture_size = 0.08
 [node name="PlayerSpawn" parent="." unique_id=297387570 instance=ExtResource("7_b64es")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
-[node name="Marcadores" type="Node3D" parent="." unique_id=1188551095 node_paths=PackedStringArray("hud")]
+[node name="Marcadores" type="Node3D" parent="." unique_id=1188551095]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 script = ExtResource("13_hitpx")
-hud = NodePath("../Manager/Hud")
 
 [node name="Pos1" type="Node3D" parent="Marcadores" unique_id=1429744567]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.97745705, -0.5087925)

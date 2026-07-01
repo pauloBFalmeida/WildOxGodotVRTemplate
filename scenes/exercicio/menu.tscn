@@ -10,14 +10,28 @@ script = ExtResource("1_v6yj5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
 
 [node name="Sprite3D" type="Sprite3D" parent="MenuPivot" unique_id=458299859]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.338135, -0.8332732)
+transform = Transform3D(0.75369775, 0, 0, 0, 1.0381762, 0, 0, 0, 1.251096, 0, 1.5753875, -1.2584047)
 modulate = Color(0, 0, 0, 0.78431374)
 texture = ExtResource("2_upuym")
 
 [node name="StaticBodyFechar" type="StaticBody3D" parent="MenuPivot" unique_id=765115724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43496323, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MenuPivot/StaticBodyFechar" unique_id=1216380078]
 
 [node name="Label3D" type="Label3D" parent="MenuPivot/StaticBodyFechar" unique_id=436683919]
 billboard = 1
 text = "Fechar Menu"
+
+[node name="LabelExplicacao" type="Label3D" parent="MenuPivot" unique_id=1155245699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8792269, -0.42627048)
+billboard = 1
+text = "Botões
+‎ ESC - Fechar o Jogo
+U - Toggle mostrar o Menu
+I - Toggle Esferas de baixo
+O - Toggle Esferas de cima
+K - Reinicia Animação
+N - Horário mais tarde
+M - Horário mais cedo
+P - Troca de Local"

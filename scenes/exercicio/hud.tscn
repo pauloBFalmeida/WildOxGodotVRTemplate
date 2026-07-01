@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://c8yr7w1tgi71k"]
+
+[ext_resource type="Script" uid="uid://d0eggpisr5n6q" path="res://scenes/exercicio/hud.gd" id="1_5ysmq"]
+[ext_resource type="Texture2D" uid="uid://de7dtly0chqpb" path="res://assets/movimento/circulo_preenc.png" id="2_6fi6k"]
+[ext_resource type="Texture2D" uid="uid://bnnxkpaeevb78" path="res://assets/movimento/circulo.png" id="3_uo2fv"]
+
+[node name="Hud" type="Control" unique_id=1375680032 groups=["HUD"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ysmq")
+
+[node name="Meio" type="Control" parent="." unique_id=2060136708]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = 73.0
+offset_right = 0.5
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Base" type="Node2D" parent="Meio" unique_id=186276945]
+position = Vector2(0, 91.5)
+scale = Vector2(0.2, 0.2)
+
+[node name="CirculoPreenc" type="Sprite2D" parent="Meio/Base" unique_id=1120342955]
+self_modulate = Color(1, 1, 1, 0.6666667)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("2_6fi6k")
+
+[node name="Circulo" type="Sprite2D" parent="Meio/Base" unique_id=753734376]
+self_modulate = Color(0.11, 0.11, 0.11, 0.78431374)
+texture = ExtResource("3_uo2fv")
+
+[node name="Texto" type="Label" parent="Meio" unique_id=1519728563]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.5
+offset_right = 33.5
+offset_bottom = 28.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 20
+text = "Inspire"
+horizontal_alignment = 1
