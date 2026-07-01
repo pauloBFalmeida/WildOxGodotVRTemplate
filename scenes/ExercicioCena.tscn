@@ -49,7 +49,6 @@ script = ExtResource("2_pidse")
 player_spawn = NodePath("../PlayerSpawn")
 
 [node name="Hud" type="Control" parent="Manager" unique_id=1776260528]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,12 +76,12 @@ position = Vector2(0, 91.5)
 scale = Vector2(0.2, 0.2)
 
 [node name="CirculoPreenc" type="Sprite2D" parent="Manager/Hud/Meio/Base" unique_id=126042302]
-self_modulate = Color(1, 1, 1, 0.3529412)
+self_modulate = Color(1, 1, 1, 0.8627451)
 scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("3_b64es")
 
 [node name="Circulo" type="Sprite2D" parent="Manager/Hud/Meio/Base" unique_id=1135954335]
-self_modulate = Color(1, 1, 1, 0.5882353)
+self_modulate = Color(0.11, 0.11, 0.11, 0.78431374)
 texture = ExtResource("4_akrpu")
 
 [node name="Texto" type="Label" parent="Manager/Hud/Meio" unique_id=225423174]
@@ -114,6 +113,7 @@ skeleton = NodePath("../..")
 [node name="StoneCircle" parent="StaticBody3D" unique_id=1812162021 instance=ExtResource("7_gtwfb")]
 
 [node name="Univas" parent="StaticBody3D" unique_id=26912560 instance=ExtResource("9_okvl8")]
+visible = false
 
 [node name="FastSky" parent="." unique_id=1363630946 instance=ExtResource("4_tvnop")]
 time_of_day = 0.72
@@ -141,9 +141,10 @@ moon_texture_size = 0.08
 [node name="PlayerSpawn" parent="." unique_id=297387570 instance=ExtResource("7_b64es")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
-[node name="Marcadores" type="Node3D" parent="." unique_id=1188551095]
+[node name="Marcadores" type="Node3D" parent="." unique_id=1188551095 node_paths=PackedStringArray("hud")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 script = ExtResource("13_hitpx")
+hud = NodePath("../Manager/Hud")
 
 [node name="Pos1" type="Node3D" parent="Marcadores" unique_id=1429744567]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.97745705, -0.5087925)

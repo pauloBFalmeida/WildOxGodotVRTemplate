@@ -1,6 +1,8 @@
 class_name Marcadores
 extends Node3D
 
+@export var hud: Hud
+
 var posicoes: Array[PosExercicio]
 
 func _ready() -> void:
@@ -24,8 +26,10 @@ func _prox() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("debug_i"):
 		posicoes[0].visible = not posicoes[0].visible
+		hud.inspire(3.5)
 	if Input.is_action_just_pressed("debug_o"):
 		posicoes[1].visible = not posicoes[1].visible
+		hud.expire(3.5)
 
 
 func iniciar() -> void:
