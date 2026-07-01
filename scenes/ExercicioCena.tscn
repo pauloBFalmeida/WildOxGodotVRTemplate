@@ -76,7 +76,7 @@ position = Vector2(0, 91.5)
 scale = Vector2(0.2, 0.2)
 
 [node name="CirculoPreenc" type="Sprite2D" parent="Manager/Hud/Meio/Base" unique_id=126042302]
-self_modulate = Color(1, 1, 1, 0.8627451)
+self_modulate = Color(1, 1, 1, 0.6666667)
 scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("3_b64es")
 

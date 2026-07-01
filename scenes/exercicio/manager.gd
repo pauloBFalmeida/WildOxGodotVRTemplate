@@ -4,6 +4,7 @@ extends Node
 
 @onready var hud: Hud = $Hud
 @onready var marcadores: Marcadores = $"../Marcadores"
+@onready var treinador: Treinador = $"../Treinador"
 
 var jogadorVR: JogadorVR
 
@@ -12,8 +13,7 @@ func _ready() -> void:
 	# pega o jogador vr
 	player_spawn.player_spawned.connect(_ajustar_jogador_vr)
 	# 
-	for i in range(20):
-		await get_tree().process_frame
+	await get_tree().create_timer(1.5).timeout
 	comecar_yoga()
 
 
@@ -26,3 +26,4 @@ func _ajustar_jogador_vr(current_player: Node3D) -> void:
 
 func comecar_yoga() -> void:
 	marcadores.iniciar()
+	treinador.comecar_exercicio()
