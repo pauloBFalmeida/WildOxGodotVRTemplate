@@ -118,7 +118,7 @@ skeleton = NodePath("../..")
 visible = false
 
 [node name="FastSky" parent="." unique_id=1363630946 instance=ExtResource("4_tvnop")]
-time_of_day = 0.72
+time_of_day = 0.48
 cloud_coverage = 0.0
 cloud_edge_softness = 1.0
 cloud_speed = 0.315
@@ -176,4 +176,4 @@ light_energy = 3.0
 spot_range = 15.0
 
 [node name="Treinador" parent="." unique_id=1576701182 instance=ExtResource("10_tvnop")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16804653, -4.067563)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17382377, -4.067563)

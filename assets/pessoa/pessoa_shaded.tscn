@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://dcv0igw8nbjyj" path="res://assets/pessoa/ghost_shader_mat.tres" id="2_epyi2"]
 [ext_resource type="Material" uid="uid://c7ox5il2ckcvx" path="res://assets/pessoa/ghost_clothes_shader_mat.tres" id="3_8mdan"]
 [ext_resource type="PackedScene" uid="uid://cejhy0lwrkb66" path="res://assets/pessoa/pessoa_mov.blend" id="4_epyi2"]
+[ext_resource type="Texture2D" uid="uid://ctnda6myc42us" path="res://assets/textures/shadow.png" id="6_qh7js"]
 
 [node name="PessoaShaded" type="Node3D" unique_id=1576701182]
 script = ExtResource("1_8mdan")
@@ -49,6 +50,11 @@ surface_material_override/0 = ExtResource("3_8mdan")
 
 [node name="Human_elvs_crude_t-shirt_male" parent="pessoa_mov/Human_rig/Skeleton3D" index="2" unique_id=602129150]
 surface_material_override/0 = ExtResource("3_8mdan")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1096997431]
+transform = Transform3D(0.1, 0, 0, 0, -3.496911e-09, -1, 0, 0.08, -4.371139e-08, 0, 0.0029291958, 0)
+modulate = Color(1, 1, 1, 0.3137255)
+texture = ExtResource("6_qh7js")
 
 [editable path="pessoa"]
 [editable path="pessoa_mov"]
