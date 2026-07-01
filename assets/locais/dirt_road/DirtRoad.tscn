@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://cty4n0qil0s86"]
-
-[ext_resource type="PackedScene" uid="uid://dwjc6vuyy5q4p" path="res://assets/locais/dirt_road/glb/free_dirt_road_through_forest.glb" id="1_qdyqt"]
-
-[node name="DirtRoad" type="Node3D" unique_id=4456804]
-
-[node name="Sketchfab_Scene" parent="." unique_id=1974681632 instance=ExtResource("1_qdyqt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.591, -145.514, 17.841)

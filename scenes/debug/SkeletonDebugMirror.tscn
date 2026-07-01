@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvqc8m5lx7vqw"]
-
-[ext_resource type="Script" path="res://scripts/VRIKDebugMirror.gd" id="1_debug"]
-[ext_resource type="PackedScene" uid="uid://d2w7np4afrg4r" path="res://assets/skeletalmesh/T-Pose.fbx" id="2_skeleton"]
-
-[node name="SkeletonDebugMirror" type="Node3D"]
-script = ExtResource("1_debug")
-
-[node name="SkeletalMesh" parent="." instance=ExtResource("2_skeleton")]
