@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bnnxkpaeevb78" path="res://assets/movimento/circulo.png" id="4_akrpu"]
 [ext_resource type="PackedScene" uid="uid://fblcle4cgh20" path="res://scenes/sky/FastSky.tscn" id="4_tvnop"]
 [ext_resource type="Texture2D" uid="uid://c2qiwgoh17uae" path="res://scenes/sky/textures/Sun.png" id="5_uufbc"]
+[ext_resource type="Script" uid="uid://cxswfywu1i0bu" path="res://scenes/cenario.gd" id="6_7ba54"]
 [ext_resource type="Texture2D" uid="uid://btno3xkhx82ol" path="res://scenes/sky/textures/Moon.png" id="6_gtwfb"]
 [ext_resource type="PackedScene" uid="uid://ch7fbvigjfei5" path="res://scenes/players/player_spawn.tscn" id="7_b64es"]
 [ext_resource type="PackedScene" uid="uid://dsvr0x0pys1aq" path="res://assets/locais/stone_circle/stone_circle.tscn" id="7_gtwfb"]
@@ -98,21 +99,22 @@ theme_override_font_sizes/font_size = 20
 text = "Inspire"
 horizontal_alignment = 1
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1487932884]
+[node name="Cenario" type="StaticBody3D" parent="." unique_id=1487932884]
+script = ExtResource("6_7ba54")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=335570807]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cenario" unique_id=335570807]
 shape = SubResource("WorldBoundaryShape3D_pfv2j")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=991499502]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cenario" unique_id=991499502]
 transform = Transform3D(82.291, 0, 0, 0, 1, 0, 0, 0, 58.275, 0, 0, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_1daua")
 mesh = SubResource("BoxMesh_3m01o")
 skeleton = NodePath("../..")
 
-[node name="StoneCircle" parent="StaticBody3D" unique_id=1812162021 instance=ExtResource("7_gtwfb")]
+[node name="StoneCircle" parent="Cenario" unique_id=1812162021 instance=ExtResource("7_gtwfb")]
 
-[node name="Univas" parent="StaticBody3D" unique_id=26912560 instance=ExtResource("9_okvl8")]
+[node name="Univas" parent="Cenario" unique_id=26912560 instance=ExtResource("9_okvl8")]
 visible = false
 
 [node name="FastSky" parent="." unique_id=1363630946 instance=ExtResource("4_tvnop")]
