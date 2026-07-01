@@ -48,6 +48,9 @@ hand_col_R = NodePath("RightController/VRHandCollider")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=1709800189]
 
+[node name="Menu" parent="XRCamera3D" unique_id=1673835585 instance=ExtResource("6_xi0i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.62974006, -1.4196578)
+
 [node name="LeftController" type="XRController3D" parent="." unique_id=169541002]
 tracker = &"left_hand"
 pose = &"grip"
@@ -73,6 +76,7 @@ grip_threshold = 0.5
 metadata/_custom_type_script = "uid://0obl2pnek78a"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftController/VRHandCollider" unique_id=2064546066]
+visible = false
 shape = SubResource("SphereShape3D_2p3jf")
 
 [node name="DebugMesh" type="MeshInstance3D" parent="LeftController/VRHandCollider" unique_id=510618872]
@@ -105,6 +109,7 @@ grip_threshold = 0.5
 metadata/_custom_type_script = "uid://0obl2pnek78a"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightController/VRHandCollider" unique_id=796488122]
+visible = false
 shape = SubResource("SphereShape3D_2p3jf")
 
 [node name="DebugMesh" type="MeshInstance3D" parent="RightController/VRHandCollider" unique_id=249716946]
@@ -135,6 +140,3 @@ right_hand_rotation_z = -6.425
 debug_on_button_press = false
 show_controller_axes = true
 metadata/_custom_type_script = "uid://ci025t0r4hqgh"
-
-[node name="Menu" parent="." unique_id=1673835585 instance=ExtResource("6_xi0i4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.059, -0.052)

@@ -114,7 +114,6 @@ skeleton = NodePath("../..")
 [node name="StoneCircle" parent="StaticBody3D" unique_id=1812162021 instance=ExtResource("7_gtwfb")]
 
 [node name="Univas" parent="StaticBody3D" unique_id=26912560 instance=ExtResource("9_okvl8")]
-visible = false
 
 [node name="FastSky" parent="." unique_id=1363630946 instance=ExtResource("4_tvnop")]
 time_of_day = 0.72

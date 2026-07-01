@@ -8,6 +8,8 @@ var marcadores : Array[Marcador]
 
 @onready var hud: Hud = $"../../Manager/Hud"
 
+@export var tipo : int = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for c in get_children():

@@ -77,7 +77,14 @@ func _ready():
 func _process(delta):
 	if Engine.is_editor_hint():
 		return # Don't run auto-cycle in editor
-		
+	
+	if Input.is_action_just_pressed("debug_m"):
+		time_of_day += 0.01
+		if (time_of_day >= 1.0): time_of_day = 0.0
+	if Input.is_action_just_pressed("debug_n"):
+		time_of_day -= 0.01
+		if (time_of_day < 0.0): time_of_day = 0.9
+	
 	if auto_cycle:
 		# Update time of day with dramatically slower speed
 		time_of_day = fmod(time_of_day + delta * day_cycle_speed, 1.0)

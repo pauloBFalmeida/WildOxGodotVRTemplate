@@ -11,7 +11,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
 
 [node name="Sprite3D" type="Sprite3D" parent="MenuPivot" unique_id=458299859]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.338135, -0.8332732)
-modulate = Color(0, 0, 0, 0.3882353)
+modulate = Color(0, 0, 0, 0.78431374)
 texture = ExtResource("2_upuym")
 
 [node name="StaticBodyFechar" type="StaticBody3D" parent="MenuPivot" unique_id=765115724]

@@ -20,5 +20,14 @@ func _prox() -> void:
 	pos.iniciar()
 	pos.fim.connect(_prox)
 
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("debug_i"):
+		posicoes[0].visible = not posicoes[0].visible
+	if Input.is_action_just_pressed("debug_o"):
+		posicoes[1].visible = not posicoes[1].visible
+
+
 func iniciar() -> void:
-	_prox()
+	#_prox()
+	pass
