@@ -6,12 +6,13 @@ var marcadores : Array[Marcador]
 @export var tempo_inspirar: float = 1.5
 @export var tempo_expirar: float = 1.5
 
-@onready var hud: Hud = $"../../Manager/Hud"
-
 @export var tipo : int = 1
+
+var hud : Hud
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hud = get_tree().get_first_node_in_group("HUD")
 	for c in get_children():
 		if c is Marcador:
 			marcadores.append(c)

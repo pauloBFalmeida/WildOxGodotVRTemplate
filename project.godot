@@ -14,8 +14,8 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-run/main_scene="uid://dxstjj18xglvb"
 config/name="Wellness Reality"
+run/main_scene="uid://dxstjj18xglvb"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
