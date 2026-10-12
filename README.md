@@ -1,3 +1,10 @@
+# Wellness Reality
+
+This is a fork from [Wild Ox Godot VR/XR Template](https://github.com/uno1982/WildOxGodotVRTemplate), used as a base to build the VR demo for the [Wellness Reality](https://paulobfalmeida.itch.io/wellness-reality) - a demo for Virtual Reality class in Univali 2026.1
+
+---
+---
+
 # Wild Ox Godot VR/XR Template
 
 > Note: Main requires Godot 4.5 or later and each branch will have locked minor version numbers
